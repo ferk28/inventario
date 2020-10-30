@@ -50,12 +50,12 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a href="{{ route('login') }}" class="nav-link">
-                                <span class="nav-link-inner--text">Login</span>
+                                <span class="nav-link-inner--text">Iniciar Sesión</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('register') }}" class="nav-link">
-                                <span class="nav-link-inner--text">Register</span>
+                                <span class="nav-link-inner--text">Registrarse</span>
                             </a>
                         </li>
                     </ul>
