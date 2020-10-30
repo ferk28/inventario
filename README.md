@@ -13,3 +13,12 @@ PHP Files Extension
 php_sqlsrv_72_ts_x64
 php_pdo_sqlsrv_72_ts_x64
 
+
+www/project
+
+composer update
+php artisan key:generate
+php artisan serve
+
+Template:
+https://github.com/creativetimofficial/argon-dashboard
