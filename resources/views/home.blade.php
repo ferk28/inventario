@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+    <title>Inventario .:INSAI:. | @yield('title','Inicio')</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/brand/favicon.png')}}" type="image/png">
     <!-- Fonts -->
@@ -65,12 +65,6 @@
                             <span class="nav-link-text">Jefes de area</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="examples/register.html">
-                            <i class="ni ni-circle-08 text-pink"></i>
-                            <span class="nav-link-text">Register</span>
-                        </a>
-                    </li>
                 </ul>
                 <!-- Divider -->
                 <hr class="my-3">
@@ -81,12 +75,6 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html" target="_blank">
-                            <i class="ni ni-palette"></i>
-                            <span class="nav-link-text">Perfil</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
                             <i class="ni ni-ui-04"></i>
                             <span class="nav-link-text">Ajustes</span>
@@ -95,7 +83,7 @@
                     <li class="nav-item">
                         <a class="nav-link active active-pro" href="examples/upgrade.html">
                             <i class="ni ni-send text-dark"></i>
-                            <span class="nav-link-text">Upgrade to PRO</span>
+                            <span class="nav-link-text">Aasd</span>
                         </a>
                     </li>
                 </ul>
@@ -117,7 +105,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                             </div>
-                            <input class="form-control" placeholder="Search" type="text">
+                                <input class="form-control" placeholder="{{Lang::get('main.search')}}" type="text">
                         </div>
                     </div>
                     <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
@@ -312,7 +300,7 @@
                         </a>
                         <div class="dropdown-menu  dropdown-menu-right ">
                             <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome!</h6>
+                                <h6 class="text-overflow m-0">Hola, bienvenido!</h6>
                             </div>
                             <a href="#!" class="dropdown-item">
                                 <i class="ni ni-single-02"></i>
@@ -321,14 +309,6 @@
                             <a href="#!" class="dropdown-item">
                                 <i class="ni ni-settings-gear-65"></i>
                                 <span>Settings</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-calendar-grid-58"></i>
-                                <span>Activity</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-support-16"></i>
-                                <span>Support</span>
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
@@ -350,25 +330,25 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Default</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">@yield('subtitle','Resguardos')</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#">Dashboards</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Default</li>
+                                <li class="breadcrumb-item"><a href="{{url('/home')}}"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item"><a href="">@yield('dir','Resguardos')</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@yield('action')</li>
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-lg-6 col-5 text-right">
+{{--                    <div class="col-lg-6 col-5 text-right">
                         <a href="#" class="btn btn-sm btn-neutral">New</a>
                         <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
+        <!-- Page content -->
+        @yield('content_home')
     </div>
-    <!-- Page content -->
-    @yield('content_home')
 </div>
 <!-- Argon Scripts -->
 <!-- Core -->

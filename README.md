@@ -22,3 +22,11 @@ php artisan serve
 
 Template:
 https://github.com/creativetimofficial/argon-dashboard
+
+
+INSTALL GIT
+
+git init
+git add .
+git commit -m "name_commit"
+
