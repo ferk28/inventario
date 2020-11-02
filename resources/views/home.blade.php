@@ -32,61 +32,7 @@
         <div class="navbar-inner">
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                <!-- Nav items -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="examples/dashboard.html">
-                            <i class="ni ni-tv-2 text-primary"></i>
-                            <span class="nav-link-text">Resguardos</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="examples/tables.html">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
-                            <span class="nav-link-text">Inventario</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="examples/icons.html">
-                            <i class="ni ni-planet text-orange"></i>
-                            <span class="nav-link-text">Areas</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="examples/profile.html">
-                            <i class="ni ni-single-02 text-yellow"></i>
-                            <span class="nav-link-text">Usuarios</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="examples/login.html">
-                            <i class="ni ni-key-25 text-info"></i>
-                            <span class="nav-link-text">Jefes de area</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Divider -->
-                <hr class="my-3">
-                <!-- Heading -->
-                <h6 class="navbar-heading p-0 text-muted">
-                    <span class="docs-normal">Documentation</span>
-                </h6>
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
-                            <i class="ni ni-ui-04"></i>
-                            <span class="nav-link-text">Ajustes</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active active-pro" href="examples/upgrade.html">
-                            <i class="ni ni-send text-dark"></i>
-                            <span class="nav-link-text">Aasd</span>
-                        </a>
-                    </li>
-                </ul>
+                @include('home.nav')
             </div>
         </div>
     </div>
@@ -247,39 +193,39 @@
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default  dropdown-menu-right ">
                             <div class="row shortcuts px-4">
                                 <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-red">
-                      <i class="ni ni-calendar-grid-58"></i>
-                    </span>
+                                <span class="shortcut-media avatar rounded-circle bg-gradient-red">
+                                  <i class="ni ni-calendar-grid-58"></i>
+                                </span>
                                     <small>Calendar</small>
                                 </a>
                                 <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-orange">
-                      <i class="ni ni-email-83"></i>
-                    </span>
+                                <span class="shortcut-media avatar rounded-circle bg-gradient-orange">
+                                  <i class="ni ni-email-83"></i>
+                                </span>
                                     <small>Email</small>
                                 </a>
                                 <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-info">
-                      <i class="ni ni-credit-card"></i>
-                    </span>
+                                <span class="shortcut-media avatar rounded-circle bg-gradient-info">
+                                  <i class="ni ni-credit-card"></i>
+                                </span>
                                     <small>Payments</small>
                                 </a>
                                 <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-green">
-                      <i class="ni ni-books"></i>
-                    </span>
+                                <span class="shortcut-media avatar rounded-circle bg-gradient-green">
+                                  <i class="ni ni-books"></i>
+                                </span>
                                     <small>Reports</small>
                                 </a>
                                 <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-purple">
-                      <i class="ni ni-pin-3"></i>
-                    </span>
+                                <span class="shortcut-media avatar rounded-circle bg-gradient-purple">
+                                  <i class="ni ni-pin-3"></i>
+                                </span>
                                     <small>Maps</small>
                                 </a>
                                 <a href="#!" class="col-4 shortcut-item">
-                    <span class="shortcut-media avatar rounded-circle bg-gradient-yellow">
-                      <i class="ni ni-basket"></i>
-                    </span>
+                                <span class="shortcut-media avatar rounded-circle bg-gradient-yellow">
+                                      <i class="ni ni-basket"></i>
+                                </span>
                                     <small>Shop</small>
                                 </a>
                             </div>
@@ -290,9 +236,9 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="media align-items-center">
-                  <span class="avatar avatar-sm rounded-circle">
-                    <img alt="Image placeholder" src="{{ asset('img/theme/team-4.jpg')}}">
-                  </span>
+                                <span class="avatar avatar-sm rounded-circle">
+                                    <img alt="Image placeholder" src="{{ asset('img/theme/man.png')}}">
+                                </span>
                                 <div class="media-body  ml-2  d-none d-lg-block">
                                     <span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
                                 </div>
@@ -304,11 +250,11 @@
                             </div>
                             <a href="#!" class="dropdown-item">
                                 <i class="ni ni-single-02"></i>
-                                <span>My profile</span>
+                                <span>Perfil</span>
                             </a>
                             <a href="#!" class="dropdown-item">
                                 <i class="ni ni-settings-gear-65"></i>
-                                <span>Settings</span>
+                                <span>Ajustes</span>
                             </a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">

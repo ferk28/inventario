@@ -15,6 +15,16 @@ class CreateInventoriesTable extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
+            $table->string('brand');
+            $table->string('serial')->unique();
+            $table->string('type');
+            $table->string('model');
+            $table->string ('color');
+            $table->string('value');
+            $table->string('feature');
+            $table->string('description');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
