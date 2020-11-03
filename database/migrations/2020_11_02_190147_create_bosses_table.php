@@ -15,10 +15,9 @@ class CreateBossesTable extends Migration
     {
         Schema::create('bosses', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->unsignedBigInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

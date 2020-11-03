@@ -15,6 +15,9 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->unsignedBigInteger('boss_id');
+            $table->foreign('boss_id')->references('id')->on('bosses')->onDelete('cascade');
             $table->timestamps();
         });
     }

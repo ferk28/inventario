@@ -15,8 +15,10 @@ class CreateSafeguardsTable extends Migration
     {
         Schema::create('safeguards', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('boss_id');
-            $table->foreign('boss_id')->references('id')->on('bosses')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('inventory_id');
+            $table->foreign('inventory_id')->references('id')->on('inventories')->onDelete('cascade');
             $table->timestamps();
         });
     }
