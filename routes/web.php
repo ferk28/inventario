@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -20,8 +21,15 @@ Route::get('/', function () {
 Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home');
 // Areas
-    Route::get('/areas', 'AreaController@index');
+/*    Route::get('/areas', 'AreaController@index');
     Route::get('/areas/create', 'AreaController@create');
     Route::get('/areas/{area}/edit', 'AreaController@edit');
-    Route::post('/areas', 'AreaController@store');
+    Route::post('/areas', 'AreaController@store');*/
 
+Route::resources([
+    'areas' => AreaController::class,
+    'bosses' => BossController::class,
+    'employees' => EmployeeController::class,
+    'inventories' => InventoryController::class,
+    'safeguards' => SafeguardController::class,
+]);

@@ -1,9 +1,27 @@
 <!-- Nav items -->
 <ul class="navbar-nav">
     <li class="nav-item">
-        <a class="nav-link active" href="examples/dashboard.html">
+        <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : null }}" href="{{url('/home')}}">
             <i class="ni ni-tv-2 text-primary"></i>
             <span class="nav-link-text">Resguardos</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::segment(1) === 'areas' ? 'active' : null }}" href="{{url('areas')}}">
+            <i class="ni ni-planet text-orange"></i>
+            <span class="nav-link-text">Areas</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::segment(1) === 'employees' ? 'active' : null }}" href="examples/profile.html">
+            <i class="ni ni-single-02 text-yellow"></i>
+            <span class="nav-link-text">Empleados</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ Request::segment(1) === 'bosses' ? 'active' : null }}" href="examples/login.html">
+            <i class="ni ni-key-25 text-info"></i>
+            <span class="nav-link-text">Los Patrones \o/</span>
         </a>
     </li>
     <li class="nav-item">
@@ -13,21 +31,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="examples/icons.html">
-            <i class="ni ni-planet text-orange"></i>
-            <span class="nav-link-text">Areas</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="examples/profile.html">
-            <i class="ni ni-single-02 text-yellow"></i>
-            <span class="nav-link-text">Empleados</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="examples/login.html">
-            <i class="ni ni-key-25 text-info"></i>
-            <span class="nav-link-text">Jefes de area</span>
+        <a class="nav-link" href="examples/dashboard.html">
+            <i class="ni ni-tie-bow text-green"></i>
+            <span class="nav-link-text">Usuarios</span>
         </a>
     </li>
 </ul>

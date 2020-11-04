@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Inventario .:INSAI:. | @yield('title','Inicio')</title>
+    <title>Inventario .:INSAI:. | @yield('subtitle')</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/brand/favicon.png')}}" type="image/png">
     <!-- Fonts -->
@@ -75,6 +75,8 @@
                             <i class="ni ni-zoom-split-in"></i>
                         </a>
                     </li>
+                    <!-- Notification -->
+                    {{--
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ni ni-bell-55"></i>
@@ -186,6 +188,9 @@
                             <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
                         </div>
                     </li>
+                    --}}
+                    <!-- Tools -->
+                    {{--
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="ni ni-ungroup"></i>
@@ -231,6 +236,7 @@
                             </div>
                         </div>
                     </li>
+                    --}}
                 </ul>
                 <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
                     <li class="nav-item dropdown">
@@ -275,26 +281,27 @@
         <div class="container-fluid">
             <div class="header-body">
                 <div class="row align-items-center py-4">
-                    <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">@yield('subtitle','Resguardos')</h6>
-                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="{{url('/home')}}"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="">@yield('dir','Resguardos')</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">@yield('action')</li>
-                            </ol>
-                        </nav>
+                        <div class="col-lg-6 col-7">
+                            <h6 class="h2 text-white d-inline-block mb-0">@yield('subtitle','Resguardos')</h6>
+                            <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                    <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a>@yield('dir','Resguardos')</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@yield('action')</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    <div class="col-lg-6 col-5 text-right">
+{{--                        <a href="#" class="btn btn-sm btn-neutral">New</a>
+                        <a href="#" class="btn btn-sm btn-neutral">Filters</a>--}}
                     </div>
-{{--                    <div class="col-lg-6 col-5 text-right">
-                        <a href="#" class="btn btn-sm btn-neutral">New</a>
-                        <a href="#" class="btn btn-sm btn-neutral">Filters</a>
-                    </div>--}}
                 </div>
             </div>
         </div>
-        <!-- Page content -->
-        @yield('content_home')
     </div>
+    <!-- Page content -->
+    @yield('content')
+
 </div>
 <!-- Argon Scripts -->
 <!-- Core -->
