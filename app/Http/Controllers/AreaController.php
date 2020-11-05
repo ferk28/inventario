@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
 use Illuminate\Http\Request;
+use App\Http\Requests\AreaFormRequest;
+use App\Http\Requests\AreaEditFormRequest;
+
 
 class AreaController extends Controller
 {
@@ -17,7 +21,8 @@ class AreaController extends Controller
      */
     public function index()
     {
-        return view('areas.index');
+        $areas = Area::all();
+        return view('areas.index', compact('areas'));
     }
 
     /**
@@ -36,9 +41,15 @@ class AreaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AreaFormRequest $request)
     {
-        //
+        //dd($request->all());
+        $area = new Area();
+        $area->name = $request->input('name');
+        $area->phone = $request->input('phone');
+        $area->extension = $request->input('extension');
+        $area->save();
+        return redirect('/areas')->with('message',' - El área ha sido agregada satisfactoriamente!');
     }
 
     /**
@@ -58,9 +69,9 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Area $area)//Area from Route::get/area/edit
     {
-        //
+        return view('areas.edit', compact('area'));
     }
 
     /**
@@ -70,9 +81,13 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AreaEditFormRequest $request, Area $area)
     {
-        //
+        $area->name=$request->input('name');
+        $area->phone=$request->input('phone');
+        $area->extension=$request->input('extension');
+        $area->save();
+        return redirect()->route('areas.index')->with('message',' - El area de ha sido actualizada satisfactoriamente');
     }
 
     /**
@@ -81,8 +96,9 @@ class AreaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Area $area)
     {
-        //
+        $area->delete();
+        return redirect()->route('areas.index')->with('message-alert',' - El area de ha sido borrada permanentemente');
     }
 }

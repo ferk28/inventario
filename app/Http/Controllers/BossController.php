@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Boss;
 use Illuminate\Http\Request;
 
 class BossController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,8 @@ class BossController extends Controller
      */
     public function index()
     {
-        //
+        $bosses = Boss::all();
+        return view('bosses.index', compact('bosses'));
     }
 
     /**
@@ -23,7 +29,7 @@ class BossController extends Controller
      */
     public function create()
     {
-        //
+        return view('bosses.create');
     }
 
     /**
@@ -34,7 +40,13 @@ class BossController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $area = new Boss();
+        $area->name = $request->input('name');
+        $area->phone = $request->input('phone');
+        $area->extension = $request->input('extension');
+        $area->save();
+        return redirect('/areas')->with('message',' - El área ha sido agregada satisfactoriamente!');
     }
 
     /**

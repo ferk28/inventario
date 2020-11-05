@@ -13,7 +13,6 @@
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         @if(session('message'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 <span class="alert-icon"><i class="ni ni-like-2"></i></span>

@@ -21,7 +21,7 @@
                                     </div>
                                     <input type="text" class="form-control @if($errors->has('name')) border-danger @endif" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="{{Lang::get('main.name')}}">
                                 </div>
-                                <span class="text-danger"><small>{{$errors->first('name')}}</small></span>
+                                <span class="text-danger" ><small>{{$errors->first('name')}}</small></span>
                             </div>
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative mb-3">

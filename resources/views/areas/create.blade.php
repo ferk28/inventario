@@ -1,7 +1,7 @@
 @extends('home')
 @section('subtitle','Areas')
 @section('dir','Areas')
-@section('action','create')
+@section('action','Nuevo')
 @section('content')
 
     <div class="container-fluid mt--6">
@@ -15,39 +15,29 @@
                                 <h3 class="mb-0">Crear nueva area</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="{{url('areas/create')}}" class="btn btn-sm btn-success">Crear nueva area</a>
+                                <a href="{{url('areas')}}" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ url('areas') }}" method="POST">
+                            @csrf
                             <div class="form-group">
-                                <label class="form-control-label" for="input-address">Address</label>
-                                <input id="input-address" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                <label class="form-control-label" for="name">Área<span class="text-muted">(Obligatorio)</span></label>
+                                <input name="name" class="form-control @if($errors->has('name')) border-danger @endif" placeholder="Nombre del área" type="text" value="{{old('name')}}" autofocus>
+                                <span class="text-danger"><small>{{ $errors->first('name')}}</small></span>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label" for="input-address">Address</label>
-                                <input id="input-address" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                <label class="form-control-label" for="phone">Teléfono<span class="text-muted">(Opcional)</span></label>
+                                <input name="phone" class="form-control @if($errors->has('phone')) border-danger @endif" placeholder="(10 dígitos)" type="number" value="{{old('phone')}}">
+                                <span class="text-danger"><small>{{ $errors->first('phone')}}</small></span>
                             </div>
                             <div class="form-group">
-                                <label class="form-control-label" for="input-address">Address</label>
-                                <input id="input-address" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                <label class="form-control-label" for="extension">Extensión<span class="text-muted">(Opcional)</span></label>
+                                <input name="extension" class="form-control @if($errors->has('extension')) border-danger @endif" placeholder="(4 dígitos)" type="number" value="{{old('extension')}}">
+                                <span class="text-danger"><small>{{ $errors->first('extension')}}</small></span>
                             </div>
-{{--
-                            <div class="form-group">
-                                <label for="name">Escriba el nombre del área</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Escriba el numero telefonico (Opcional)</label>
-                                <input type="text" name="phone" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="extension">Escriba la extension del área (Opcional)</label>
-                                <input type="text" name="extension" class="form-control">
-                            </div>
---}}
-
+                            <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
                     </div>
                 </div>

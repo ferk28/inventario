@@ -1,6 +1,6 @@
 @extends('home')
-@section('subtitle','Areas')
-@section('dir','Areas')
+@section('subtitle','Jefes de área')
+@section('dir','Patrones')
 @section('content')
 
     <div class="container-fluid mt--6">
@@ -30,14 +30,15 @@
                         <div class="row align-items-center">
 
                             <div class="col">
-                                <h3 class="mb-0">Areas</h3>
+                                <h3 class="mb-0">Jefes</h3>
                             </div>
 
                             <div class="col text-right">
-                                <a href="{{url('areas/create')}}" class="btn btn-sm btn-success">Crear nueva area</a>
+                                <a href="{{url('bosses/create')}}" class="btn btn-sm btn-success">Crear nueva jefe</a>
                             </div>
                         </div>
                     </div>
+{{--
                     <div class="table-responsive">
                         <!-- Projects table -->
                         <table class="table align-items-center table-flush">
@@ -74,14 +75,11 @@
                             </tbody>
                         </table>
                     </div>
+--}}
                 </div>
             </div>
         </div>
         <!-- Footer -->
         @include('home.footer')
     </div>
-
-
-{{--    --}}
 @endsection
-

@@ -12,16 +12,17 @@
             <span class="nav-link-text">Areas</span>
         </a>
     </li>
+
     <li class="nav-item">
-        <a class="nav-link {{ Request::segment(1) === 'employees' ? 'active' : null }}" href="examples/profile.html">
-            <i class="ni ni-single-02 text-yellow"></i>
-            <span class="nav-link-text">Empleados</span>
+        <a class="nav-link {{ Request::segment(1) === 'bosses' ? 'active' : null }}" href="{{url('bosses')}}">
+            <i class="ni ni-key-25 text-info"></i>
+            <span class="nav-link-text">Los Patrones \o/</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link {{ Request::segment(1) === 'bosses' ? 'active' : null }}" href="examples/login.html">
-            <i class="ni ni-key-25 text-info"></i>
-            <span class="nav-link-text">Los Patrones \o/</span>
+        <a class="nav-link {{ Request::segment(1) === 'employees' ? 'active' : null }}" href="{{url('employees')}}">
+            <i class="ni ni-single-02 text-yellow"></i>
+            <span class="nav-link-text">Empleados</span>
         </a>
     </li>
     <li class="nav-item">
