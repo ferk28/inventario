@@ -34,40 +34,36 @@
                             </div>
 
                             <div class="col text-right">
-                                <a href="{{url('bosses/create')}}" class="btn btn-sm btn-success">Crear nueva jefe</a>
+                                <a href="{{url('bosses/create')}}" class="btn btn-sm btn-success">Crear nuevo jefe</a>
                             </div>
                         </div>
                     </div>
-{{--
                     <div class="table-responsive">
                         <!-- Projects table -->
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Extensión</th>
+                                <th scope="col">Area</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($areas as $area)
+                            @foreach($areas->$bosses as $boss)
                                 <tr>
                                     <th scope="row">
-                                        {{$area->name}}
+                                        {{$boss->name}}
                                     </th>
                                     <td>
-                                        {{$area->phone}}
+                                        {{$boss}}
+
                                     </td>
                                     <td>
-                                        {{$area->extension}}
-                                    </td>
-                                    <td>
-                                        <form action="{{ url('/areas/'.$area->id) }}" method="post" >
+                                        <form action="{{ url('/areas/'.$boss->id) }}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/areas/'.$area->id.'/edit') }}"></a>
-                                            <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminar de tu corazon? ');"></button>
+                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/areas/'.$boss->id.'/edit') }}"></a>
+                                            <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminarlo de tu corazon y de nuestros registros?');"></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -75,7 +71,6 @@
                             </tbody>
                         </table>
                     </div>
---}}
                 </div>
             </div>
         </div>

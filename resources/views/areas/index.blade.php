@@ -66,7 +66,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/areas/'.$area->id.'/edit') }}"></a>
-                                            <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminar de tu corazon? ');"></button>
+                                            <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminarlo de tu corazon y de nuestros registros?');"></button>
                                         </form>
                                     </td>
                                 </tr>

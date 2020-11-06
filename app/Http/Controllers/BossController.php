@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
 use App\Boss;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,8 @@ class BossController extends Controller
      */
     public function create()
     {
-        return view('bosses.create');
+        $areas = Area::all();
+        return view('bosses.create', compact('areas'));
     }
 
     /**
@@ -41,12 +43,11 @@ class BossController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        $area = new Boss();
-        $area->name = $request->input('name');
-        $area->phone = $request->input('phone');
-        $area->extension = $request->input('extension');
-        $area->save();
-        return redirect('/areas')->with('message',' - El área ha sido agregada satisfactoriamente!');
+        $boss = new Boss();
+        $boss->name = $request->input('name');
+        $boss->area_id = $request->input('area_id');
+        $boss->save();
+        return redirect('/bosses');
     }
 
     /**
