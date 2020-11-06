@@ -1,6 +1,6 @@
 @extends('home')
-@section('subtitle','Areas')
-@section('dir','Areas')
+@section('subtitle','Inventario')
+@section('dir','Inventario')
 @section('content')
     <div class="container-fluid mt--6">
         <!-- Page content -->
@@ -29,11 +29,11 @@
                         <div class="row align-items-center">
 
                             <div class="col">
-                                <h3 class="mb-0">Areas</h3>
+                                <h3 class="mb-0">Inventario</h3>
                             </div>
 
                             <div class="col text-right">
-                                <a href="{{url('areas/create')}}" class="btn btn-sm btn-success">Crear nueva area</a>
+                                <a href="{{url('inventories/create')}}" class="btn btn-sm btn-success">Crear nuevo producto</a>
                             </div>
                         </div>
                     </div>
@@ -42,29 +42,32 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Telefono</th>
-                                <th scope="col">Extensión</th>
+                                <th scope="col">Nombre de la marca</th>
+                                <th scope="col">Serial</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Modelo</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Características</th>
+                                <th scope="col">Descripción</th>
+
                                 <th scope="col">Opciones</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($areas as $area)
+                            @foreach($employees as $employee)
                                 <tr>
                                     <th scope="row">
-                                        {{$area->name}}
+                                        {{$employee->name}}
                                     </th>
                                     <td>
-                                        {{$area->phone}}
+                                        {{$employee->boss->name}}
                                     </td>
                                     <td>
-                                        {{$area->extension}}
-                                    </td>
-                                    <td>
-                                        <form action="{{ url('/areas/'.$area->id) }}" method="post" >
+                                        <form action="{{ url('/employees/'.$employee->id) }}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/areas/'.$area->id.'/edit') }}"></a>
+                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/employees/'.$employee->id.'/edit') }}"></a>
                                             <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminar de tu corazon? ');"></button>
                                         </form>
                                     </td>
@@ -79,8 +82,4 @@
         <!-- Footer -->
         @include('home.footer')
     </div>
-
-
-{{--    --}}
 @endsection
-

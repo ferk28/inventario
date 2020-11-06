@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Inventory;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,8 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        //
+        $inventories = Inventory::all();
+        return view('inventories.index', compact('inventories'));
     }
 
     /**
@@ -23,7 +29,7 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('inventories.create');
     }
 
     /**

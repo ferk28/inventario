@@ -87,7 +87,7 @@ class AreaController extends Controller
         $area->phone=$request->input('phone');
         $area->extension=$request->input('extension');
         $area->save();
-        return redirect()->route('areas.index')->with('message',' - El area de ha sido actualizada satisfactoriamente');
+        return redirect()->route('areas.index')->with('message',' - El area ha sido actualizada satisfactoriamente');
     }
 
     /**
@@ -99,6 +99,6 @@ class AreaController extends Controller
     public function destroy(Area $area)
     {
         $area->delete();
-        return redirect()->route('areas.index')->with('message-alert',' - El area de ha sido borrada permanentemente');
+        return redirect()->route('areas.index')->with('message-alert',' - El area ha sido borrada permanentemente');
     }
 }
