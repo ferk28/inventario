@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Boss;
+use App\Employee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::with('boss')->get();
+        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -23,7 +30,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $bosses = Boss::all();
+        return view('employees.create',compact('bosses'));
     }
 
     /**
@@ -34,7 +42,12 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $employees = new Employee();
+        $employees->name = $request->input('name');
+        $employees->boss_id = $request->input('boss_id');
+        $employees->save();
+        return redirect('/employees')->with('message',' - El empleado ha sido agregado satisfactoriamente!');
     }
 
     /**
@@ -54,9 +67,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        //
+        $bosses = Boss::all();
+        return view('employees.edit', compact('bosses','employee'));
     }
 
     /**
@@ -66,9 +80,12 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        $employee->name=$request->input('name');
+        $employee->boss_id=$request->input('boss_id');
+        $employee->save();
+        return redirect()->route('employees.index')->with('message',' - El empleado ha sido actualizado satisfactoriamente');
     }
 
     /**
@@ -77,8 +94,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employees.index')->with('message-alert',' - El empleado ha sido borrado permanentemente');
     }
 }

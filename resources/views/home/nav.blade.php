@@ -26,7 +26,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="examples/tables.html">
+        <a class="nav-link {{ Request::segment(1) === 'inventories' ? 'active' : null }}" href="{{url('inventories')}}">
             <i class="ni ni-bullet-list-67 text-default"></i>
             <span class="nav-link-text">Inventario</span>
         </a>

@@ -15,7 +15,7 @@
                                 <h3 class="mb-0">Editar area</h3>
                             </div>
                             <div class="col text-right">
-                                <a href="javascript:history.back()" class="btn btn-sm btn-danger">Cancelar</a>
+                                <a href="{{url('areas')}}" class="btn btn-sm btn-danger">Cancelar</a>
                             </div>
                         </div>
                     </div>

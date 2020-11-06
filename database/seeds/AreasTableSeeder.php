@@ -2,6 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\Area;
+use App\Boss;
+
+
 class AreasTableSeeder extends Seeder
 {
     /**
@@ -31,7 +34,19 @@ class AreasTableSeeder extends Seeder
             'phone' => '1234567890',
             'extension' => '1234 ',
         ]);
-
+        Area::create([
+            'name' => 'Sistemas',
+            'phone' => '1234567890',
+            'extension' => '1234 ',
+        ]);
+        Boss::create([
+            'name'=>'Adolfo',
+            'area_id'=>'5'
+        ]);
+        Boss::create([
+            'name'=>'Erick',
+            'area_id'=>'1'
+        ]);
     }
 }
 
