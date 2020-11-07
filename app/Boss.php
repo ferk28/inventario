@@ -9,4 +9,8 @@ class Boss extends Model
     protected $fillable = [
         'name', 'area_id',
     ];
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
 }

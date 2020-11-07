@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Inventory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InventoryController extends Controller
 {
@@ -29,7 +30,8 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        return view('inventories.create');
+        $inventories = Inventory::all();
+        return view('inventories.create', compact('inventories'));
     }
 
     /**
@@ -40,7 +42,17 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inventories = new Inventory();
+        $inventories->brand = $request->input('brand');
+        $inventories->serial = $request->input('serial');
+        $inventories->type = $request->input('type');
+        $inventories->model = $request->input('model');
+        $inventories->color = $request->input('color');
+        $inventories->value = $request->input('value');
+        $inventories->feature = $request->input('feature');
+        $inventories->description = $request->input('description');
+        $inventories->user_id = Auth::user(id);
+        return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
     }
 
     /**

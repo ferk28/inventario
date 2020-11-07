@@ -50,21 +50,38 @@
                                 <th scope="col">Precio</th>
                                 <th scope="col">Características</th>
                                 <th scope="col">Descripción</th>
-
                                 <th scope="col">Opciones</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($employees as $employee)
+                            @foreach($inventories as $inventory)
                                 <tr>
                                     <th scope="row">
-                                        {{$employee->name}}
+                                        {{$inventory->brand}}
                                     </th>
                                     <td>
-                                        {{$employee->boss->name}}
+                                        {{$inventory->serial}}
                                     </td>
                                     <td>
-                                        <form action="{{ url('/employees/'.$employee->id) }}" method="post" >
+                                        {{$inventory->type}}
+                                    </td>
+                                    <td>
+                                        {{$inventory->model}}
+                                    </td>
+                                    <td>
+                                        {{$inventory->color}}
+                                    </td>
+                                    <td>
+                                        {{$inventory->value}}
+                                    </td>
+                                    <td>
+                                        {{$inventory->feature}}
+                                    </td>
+                                    <td>
+                                        {{$inventory->description}}
+                                    </td>
+                                    <td>
+                                        <form action="{{ url('/employees/'.$inventory->id) }}" method="post" >
                                             @csrf
                                             @method('DELETE')
                                             <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/employees/'.$employee->id.'/edit') }}"></a>

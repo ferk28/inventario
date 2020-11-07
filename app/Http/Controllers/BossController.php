@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Area;
 use App\Boss;
+use App\User;
 use Illuminate\Http\Request;
 
 class BossController extends Controller
@@ -67,9 +68,10 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Boss $boss)
     {
-        //
+        $areas = Area::all();
+        return view('bosses.edit', compact('areas', 'boss'));
     }
 
     /**
@@ -79,9 +81,13 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Boss $boss)
     {
-        //
+//        dd($request->all());
+        $boss->name = $request->input('name');
+        $boss->area_id = $request->input('area_id');
+        $boss->save();
+        return redirect()->route('bosses.index')->with('message',' - El patron ha sido actualizado satisfactoriamente');
     }
 
     /**
@@ -90,8 +96,9 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Boss $boss)
     {
-        //
+        $boss->delete();
+        return redirect()->route('bosses.index')->with('message-alert',' - El empleado ha sido borrado permanentemente');
     }
 }

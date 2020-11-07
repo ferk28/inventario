@@ -3,7 +3,7 @@
     <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : null }}" href="{{url('/home')}}">
             <i class="ni ni-tv-2 text-primary"></i>
-            <span class="nav-link-text">Resguardos</span>
+            <span class="nav-link-text">Responsivas</span>
         </a>
     </li>
     <li class="nav-item">

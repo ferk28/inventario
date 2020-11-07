@@ -49,20 +49,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($areas->$bosses as $boss)
+                            @foreach($bosses as $boss)
                                 <tr>
                                     <th scope="row">
                                         {{$boss->name}}
                                     </th>
                                     <td>
-                                        {{$boss}}
+                                        {{$boss->area->name}}
 
                                     </td>
                                     <td>
-                                        <form action="{{ url('/areas/'.$boss->id) }}" method="post" >
+                                        <form action="{{ url('/bosses/'.$boss->id) }}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/areas/'.$boss->id.'/edit') }}"></a>
+                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/bosses/'.$boss->id.'/edit') }}"></a>
                                             <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminarlo de tu corazon y de nuestros registros?');"></button>
                                         </form>
                                     </td>
