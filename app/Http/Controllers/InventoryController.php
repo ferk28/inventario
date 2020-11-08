@@ -30,8 +30,7 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        $inventories = Inventory::all();
-        return view('inventories.create', compact('inventories'));
+        return view('inventories.create'    );
     }
 
     /**
@@ -42,17 +41,19 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
-        $inventories = new Inventory();
-        $inventories->brand = $request->input('brand');
-        $inventories->serial = $request->input('serial');
-        $inventories->type = $request->input('type');
-        $inventories->model = $request->input('model');
-        $inventories->color = $request->input('color');
-        $inventories->value = $request->input('value');
-        $inventories->feature = $request->input('feature');
-        $inventories->description = $request->input('description');
-        $inventories->user_id = Auth::user(id);
-        return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
+        //dd($request->all());
+                $inventories = new Inventory();
+                $inventories->brand = $request->input('brand');
+                $inventories->serial = $request->input('serial');
+                $inventories->type = $request->input('type');
+                $inventories->model = $request->input('model');
+                $inventories->color = $request->input('color');
+                $inventories->value = $request->input('value');
+                $inventories->feature = $request->input('feature');
+                $inventories->description = $request->input('description');
+                $inventories->user_id = Auth::user()->id;
+                $inventories->save();
+                return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
     }
 
     /**
@@ -72,9 +73,9 @@ class InventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Inventory $inventory)
     {
-        //
+        return view('inventories.edit', compact('inventory'));
     }
 
     /**
@@ -84,9 +85,19 @@ class InventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Inventory $inventory)
     {
-        //
+        $inventory->brand = $request->input('brand');
+        $inventory->serial = $request->input('serial');
+        $inventory->type = $request->input('type');
+        $inventory->model = $request->input('model');
+        $inventory->color = $request->input('color');
+        $inventory->value = $request->input('value');
+        $inventory->feature = $request->input('feature');
+        $inventory->description = $request->input('description');
+        $inventory->user_id = Auth::user()->id;
+        $inventory->save();
+        return redirect()->route('inventories.index')->with('message',' - El area ha sido actualizada satisfactoriamente');
     }
 
     /**
@@ -95,8 +106,9 @@ class InventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Inventory $inventory)
     {
-        //
+        $inventory->delete();
+        return redirect()->route('inventories.index')->with('message-alert',' - El area ha sido borrada permanentemente');
     }
 }

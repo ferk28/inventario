@@ -28,6 +28,7 @@
                                 <input name="name" class="form-control @if($errors->has('name')) border-danger @endif" placeholder="Nombre del área" type="text" value="{{old('name', $area->name)}}" autofocus>
                                 <span class="text-danger"><small>{{ $errors->first('name')}}</small></span>
                             </div>
+
                             <div class="form-group">
                                 <label class="form-control-label" for="phone">Teléfono <span class="text-muted">(Opcional)</span></label>
                                 <input name="phone" class="form-control @if($errors->has('phone')) border-danger @endif" placeholder="Teléfono (10 dígitos)" type="number" value="{{old('phone', $area->phone)}}">

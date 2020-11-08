@@ -23,7 +23,7 @@
             </div>
         @endif
         <div class="row">
-            <div class="col-xl-8 center">
+            <div class="col-xl-12 center">
                 <div class="card">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
@@ -81,10 +81,10 @@
                                         {{$inventory->description}}
                                     </td>
                                     <td>
-                                        <form action="{{ url('/employees/'.$inventory->id) }}" method="post" >
+                                        <form action="{{ url('/inventories/'.$inventory->id) }}" method="post" >
                                             @csrf
                                             @method('DELETE')
-                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/employees/'.$employee->id.'/edit') }}"></a>
+                                            <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/inventories/'.$inventory->id.'/edit') }}"></a>
                                             <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminar de tu corazon? ');"></button>
                                         </form>
                                     </td>
