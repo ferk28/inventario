@@ -48,7 +48,7 @@ class BossController extends Controller
         $boss->name = $request->input('name');
         $boss->area_id = $request->input('area_id');
         $boss->save();
-        return redirect('/bosses');
+        return redirect('/bosses')->with('message',' - El jefe ha sido agregado satisfactoriamente!');
     }
 
     /**

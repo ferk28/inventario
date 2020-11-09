@@ -1,4 +1,4 @@
-@extends('home')
+ @extends('home')
 @section('subtitle','Empleados')
 @section('dir','Empleados')
 @section('action','Editar')
@@ -27,10 +27,10 @@
                             <input name="name" class="form-control @if($errors->has('name')) border-danger @endif" placeholder="Como aparecerá en su responsiva" type="text" value="{{old('name', $employee->name)}}" autofocus>
                                 <span class="text-danger"><small>{{ $errors->first('name')}}</small></span>
                             </div>
-                            <label class="form-control-label" for="boss_id">Nombre del jefe en área<span class="text-muted">(Obligatorio)</span></label>
+                            <label class="form-control-label">Nombre del jefe en área<span class="text-muted">(Obligatorio)</span></label>
                             <div class="form-group">
                                 <select class="form-control @if($errors->has('boss_id')) border-danger @endif" name="boss_id" id="boss_id">
-                                    <option value="">{{$employee->boss->name}}</option>
+                                    <option value="">Seleccionar...</option>
                                     @foreach($bosses as $boss)
                                         <option value="{{$boss['id']}}">{{$boss['name']}}</option>
                                     @endforeach

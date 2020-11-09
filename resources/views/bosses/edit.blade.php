@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label class="form-control-label">Nombre del área <span class="text-muted">(Obligatorio)</span></label>
                             <select class="form-control" name="area_id" id="area_id">
-                                <option value="">{{$boss->area->name}}</option>
+                                <option value="">Seleccionar...</option>
                                 @foreach($areas as $area)
                                     <option value="{{$area['id']}}">{{$area['name']}}</option>
                                 @endforeach

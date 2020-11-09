@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Boss;
 use App\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\If_;
 
 class EmployeeController extends Controller
 {
