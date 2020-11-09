@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Area;
 use App\Boss;
-use App\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\BossFormRequest;
+
 
 class BossController extends Controller
 {
@@ -41,7 +41,7 @@ class BossController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BossFormRequest $request)
     {
         //dd($request->all());
         $boss = new Boss();
@@ -81,7 +81,7 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Boss $boss)
+    public function update(BossFormRequest $request, Boss $boss)
     {
 //        dd($request->all());
         $boss->name = $request->input('name');

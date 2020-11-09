@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BossFormRequest extends FormRequest
+class SafeguardFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class BossFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1|max:25',
-            'area_id'=>'required',
+            'inventory_id'=>'required|unique:safeguards,inventory_id',
+            'employee_id'=>'required',
         ];
     }
 }

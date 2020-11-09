@@ -1,7 +1,7 @@
 <!-- Nav items -->
 <ul class="navbar-nav">
     <li class="nav-item">
-        <a class="nav-link {{ Request::segment(1) === 'home' ? 'active' : null }}" href="{{url('/home')}}">
+        <a class="nav-link {{ Request::segment(1) === 'safeguards' ? 'active' : null }}" href="{{url('safeguards')}}">
             <i class="ni ni-tv-2 text-primary"></i>
             <span class="nav-link-text">Responsivas</span>
         </a>
@@ -32,11 +32,11 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="examples/dashboard.html">
+{{--        <a class="nav-link" href="examples/dashboard.html">
             <i class="ni ni-tie-bow text-green"></i>
             <span class="nav-link-text">Usuarios</span>
         </a>
-    </li>
+    </li>--}}
 </ul>
 <!-- Divider -->
 <hr class="my-3">
@@ -47,15 +47,18 @@
 <!-- Navigation -->
 <ul class="navbar-nav mb-md-3">
     <li class="nav-item">
-        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html" target="_blank">
+        <a class="nav-link" href="" target="_blank">
             <i class="ni ni-ui-04"></i>
             <span class="nav-link-text">Ajustes</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active active-pro" href="examples/upgrade.html">
+        <a class="nav-link active active-pro" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
             <i class="ni ni-send text-dark"></i>
             <span class="nav-link-text">Cerrar sesión</span>
         </a>
+        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+        </form>
     </li>
 </ul>

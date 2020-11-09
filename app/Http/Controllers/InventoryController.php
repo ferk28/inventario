@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InventoryEditFormRequest;
+use App\Http\Requests\InventoryFormRequest;
 use App\Inventory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +41,7 @@ class InventoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InventoryFormRequest $request)
     {
         //dd($request->all());
                 $inventories = new Inventory();
@@ -85,7 +87,7 @@ class InventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventory $inventory)
+    public function update(InventoryEditFormRequest $request, Inventory $inventory)
     {
         $inventory->brand = $request->input('brand');
         $inventory->serial = $request->input('serial');

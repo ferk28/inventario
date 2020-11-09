@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BossFormRequest extends FormRequest
+class InventoryFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,12 @@ class BossFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|min:1|max:25',
-            'area_id'=>'required',
+            'brand'=>'required|min:1|max:25',
+            'type'=>'required|min:1|max:25',
+            'serial'=>'required|min:1|max:25|unique:inventories,serial',
+            'model'=>'required|min:1|max:25',
+            'value'=>'required|numeric',
+            'features'=>'required|min:1|max:100',
         ];
     }
 }

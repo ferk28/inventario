@@ -21,10 +21,13 @@ Route::get('/', function () {
 Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home');
 // Areas
-/*    Route::get('/areas', 'AreaController@index');
+/*  Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/areas', 'AreaController@index');
     Route::get('/areas/create', 'AreaController@create');
     Route::get('/areas/{area}/edit', 'AreaController@edit');
     Route::post('/areas', 'AreaController@store');*/
+
+Route::get('/safeguards/pdf/{id}', 'SafeguardController@PDFgenerator');
 
 Route::resources([
     'areas' => AreaController::class,
@@ -32,4 +35,5 @@ Route::resources([
     'employees' => EmployeeController::class,
     'inventories' => InventoryController::class,
     'safeguards' => SafeguardController::class,
+
 ]);

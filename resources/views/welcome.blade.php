@@ -1,100 +1,66 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.form')
+@section('title','Login')
+@section('content')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
+    <!-- Page content -->
+    <div class="container mt--8 pb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-body px-lg-5 py-lg-5">
+                        <div class="text-center text-muted mb-4">
+                            <small>Hola! Bienvenido, por favor ingrese sus datos</small>
+                        </div>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            @if(session('message'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                                    <span class="alert-text"><strong>Éxito!</strong>{{session('message')}}</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+                            <div class="form-group mb-3">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                    </div>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="{{Lang::get('main.email')}}">
+                                </div>
+                                <span class="text-danger"><small>{{$errors->first('email')}}</small></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    </div>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="{{Lang::get('main.password')}}">
+                                </div>
+                                <span class="text-danger"><small>{{$errors->first('password')}}</small></span>
+                            </div>
+                            <div class="custom-control custom-control-alternative custom-checkbox">
+                                <input name="remember" class="custom-control-input" id="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
+                                <label class="custom-control-label" for="remember">
+                                    <span class="text-muted">Recordar datos</span>
+                                </label>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary my-4">Iniciar sesión</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <a href="#" class="text-light"><small>Olvidaste tu contraseña?</small></a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="{{ route('register') }}" class="text-light"><small>Crear nueva cuenta</small></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection

@@ -30,14 +30,13 @@
                             <label class="form-control-label">Nombre del jefe en área<span class="text-muted">(Obligatorio)</span></label>
                             <div class="form-group">
                                 <select class="form-control @if($errors->has('boss_id')) border-danger @endif" name="boss_id" id="boss_id">
-                                    <option value="">Seleccionar...</option>
                                     @foreach($bosses as $boss)
                                         <option value="{{$boss['id']}}">{{$boss['name']}}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger"><small>{{ $errors->first('boss_id')}}</small></span>
                             </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('¿Seguro que deseas editar este registro?');">Guardar</button>
                         </form>
                     </div>
                 </div>

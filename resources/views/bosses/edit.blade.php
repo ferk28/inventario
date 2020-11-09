@@ -12,7 +12,7 @@
                 <div class="card-header border-0">
                     <div class="row align-items-center">
                         <div class="col">
-                        <h3 class="mb-0">Editar Jefe</h3>
+                        <h3 class="mb-0">Editar jefe de área</h3>
                         </div>
                         <div class="col text-right">
                             <a href="{{url('bosses')}}" class="btn btn-sm btn-danger">Cancelar</a>
@@ -31,14 +31,13 @@
                         <div class="form-group">
                             <label class="form-control-label">Nombre del área <span class="text-muted">(Obligatorio)</span></label>
                             <select class="form-control" name="area_id" id="area_id">
-                                <option value="">Seleccionar...</option>
                                 @foreach($areas as $area)
                                     <option value="{{$area['id']}}">{{$area['name']}}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger"><small>{{ $errors->first('employee_id')}}</small></span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary" onclick="return confirm('¿Seguro que deseas editar este registro?');">Guardar</button>
                     </form>
                 </div>
             </div>

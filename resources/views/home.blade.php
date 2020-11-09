@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Inventario .:INSAI:. | @yield('subtitle')</title>
+    <title>Inventario .:INSAI:. | @yield('subtitle','Inicio')</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('img/brand/favicon.png')}}" type="image/png">
     <!-- Fonts -->
@@ -25,7 +25,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header  align-items-center">
-            <a class="navbar-brand" href="{{url('/home')}}"> <!--href javascript:void(0)-->
+            <a class="navbar-brand" href="{{url('/safeguards')}}"> <!--ref="/home" href javascript:void(0)-->
                 <img src="{{ asset('img/brand/logo.png')}}" class="navbar-brand-img" alt="...">
             </a>
         </div>
@@ -258,10 +258,10 @@
                                 <i class="ni ni-single-02"></i>
                                 <span>Perfil</span>
                             </a>
-                            <a href="#!" class="dropdown-item">
+{{--                            <a href="#!" class="dropdown-item">
                                 <i class="ni ni-settings-gear-65"></i>
                                 <span>Ajustes</span>
-                            </a>
+                            </a>--}}
                             <div class="dropdown-divider"></div>
                             <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                                 <i class="ni ni-user-run"></i>
@@ -285,7 +285,7 @@
                             <h6 class="h2 text-white d-inline-block mb-0">@yield('subtitle','Resguardos')</h6>
                             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                                 <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                    <li class="breadcrumb-item"><a href="{{url('/')}}"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="{{url('safeguards')}}"><i class="fas fa-home"></i></a></li>
                                     <li class="breadcrumb-item"><a>@yield('dir','Resguardos')</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">@yield('action')</li>
                                 </ol>

@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Boss;
 use App\Employee;
+use App\Http\Requests\EmployeeFormRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Stmt\If_;
 
 class EmployeeController extends Controller
 {
@@ -42,7 +41,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmployeeFormRequest $request)
     {
         //dd($request->all());
         $employees = new Employee();
@@ -82,7 +81,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(EmployeeFormRequest $request, Employee $employee)
     {
         $employee->name=$request->input('name');
         $employee->boss_id=$request->input('boss_id');

@@ -66,14 +66,14 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label">Precio</label>
+                                            <label class="form-control-label">Precio<span class="text-muted">(Obligatorio)</span></label>
                                             <input type="number" name="value" class="form-control @if($errors->has('value')) border-danger @endif" placeholder="00.00">
                                             <span class="text-danger"><small>{{ $errors->first('value')}}</small></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group1">
-                                            <label class="form-control-label">Características</label>
+                                            <label class="form-control-label">Características<span class="text-muted">(Obligatorio)</span></label>
                                             <input type="text" name="feature" class="form-control @if($errors->has('feature')) border-danger @endif" placeholder="RAM, Disco duro, Procesador... ">
                                             <span class="text-danger"><small>{{ $errors->first('feature')}}</small></span>
                                         </div>
