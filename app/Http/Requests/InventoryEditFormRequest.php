@@ -26,7 +26,7 @@ class InventoryEditFormRequest extends FormRequest
         return [
             'brand'=>'required|min:1|max:25',
             'type'=>'required|min:1|max:25',
-            'serial'=>'required|min:1|max:25',
+            'serial'=>'required|min:1|max:50',
             'model'=>'required|min:1|max:25',
             'value'=>'required|numeric',
             'features'=>'required|min:1|max:100',

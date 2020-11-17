@@ -6,7 +6,7 @@ use App\Http\Requests\InventoryEditFormRequest;
 use App\Http\Requests\InventoryFormRequest;
 use App\Inventory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+Use Auth;
 
 class InventoryController extends Controller
 {
@@ -32,7 +32,7 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        return view('inventories.create'    );
+        return view('inventories.create');
     }
 
     /**
@@ -44,17 +44,17 @@ class InventoryController extends Controller
     public function store(InventoryFormRequest $request)
     {
         //dd($request->all());
-                $inventories = new Inventory();
-                $inventories->brand = $request->input('brand');
-                $inventories->serial = $request->input('serial');
-                $inventories->type = $request->input('type');
-                $inventories->model = $request->input('model');
-                $inventories->color = $request->input('color');
-                $inventories->value = $request->input('value');
-                $inventories->feature = $request->input('feature');
-                $inventories->description = $request->input('description');
-                $inventories->user_id = Auth::user()->id;
-                $inventories->save();
+                $inventory = new Inventory();
+                $inventory->brand = $request->input('brand');
+                $inventory->serial = $request->input('serial');
+                $inventory->type = $request->input('type');
+                $inventory->model = $request->input('model');
+                $inventory->color = $request->input('color');
+                $inventory->value = $request->input('value');
+                $inventory->feature = $request->input('feature');
+                $inventory->description = $request->input('description');
+                $inventory->user_id = Auth::user()->id;
+                $inventory->save();
                 return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
     }
 
@@ -89,6 +89,7 @@ class InventoryController extends Controller
      */
     public function update(InventoryEditFormRequest $request, Inventory $inventory)
     {
+//        dd($request->all());
         $inventory->brand = $request->input('brand');
         $inventory->serial = $request->input('serial');
         $inventory->type = $request->input('type');

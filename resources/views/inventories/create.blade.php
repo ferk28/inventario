@@ -26,14 +26,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label">Nombre de la marca<span class="text-muted">(Obligatorio)</span></label>
-                                            <input name="brand" type="text" class="form-control" placeholder="LG, Apple, Alcatel, ASUS, Acer, DElL, HP etc... " @if($errors->has('brand')) border-danger @endif value="{{old('brand')}}" autofocus>
+                                            <input name="brand" type="text" class="form-control @if($errors->has('brand')) border-danger @endif" placeholder="LG, Apple, Alcatel, ASUS, Acer, DElL, HP etc... " value="{{old('brand')}}" autofocus>
                                             <span class="text-danger"><small>{{ $errors->first('brand')}}</small></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group1">
                                             <label class="form-control-label">Tipo<span class="text-muted">(Obligatorio)</span></label>
-                                            <input name="type" type="text" class="form-control" placeholder="Computadora, laptop, celular etc...">
+                                            <input name="type" type="text" class="form-control @if($errors->has('type')) border-danger @endif" placeholder="Computadora, laptop, celular etc..." value="{{old('type')}}">
                                             <span class="text-danger"><small>{{ $errors->first('type')}}</small></span>
                                         </div>
                                     </div>
@@ -49,14 +49,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label">Modelo<span class="text-muted">(Obligatorio)</span></label>
-                                            <input type="text" name="model" class="form-control @if($errors->has('model')) border-danger @endif" placeholder="Modelo del producto">
+                                            <input type="text" name="model" class="form-control @if($errors->has('model')) border-danger @endif" placeholder="Modelo del producto" value="{{old('model')}}">
                                             <span class="text-danger"><small>{{ $errors->first('model')}}</small></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group1">
                                             <label class="form-control-label">Color</label>
-                                            <input type="text" name="color" class="form-control @if($errors->has('color')) border-danger @endif" placeholder="Color">
+                                            <input type="text" name="color" class="form-control @if($errors->has('color')) border-danger @endif" placeholder="Color" value="{{old('color')}}">
                                             <span class="text-danger"><small>{{ $errors->first('color')}}</small></span>
                                         </div>
                                     </div>
@@ -67,14 +67,14 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label">Precio<span class="text-muted">(Obligatorio)</span></label>
-                                            <input type="number" name="value" class="form-control @if($errors->has('value')) border-danger @endif" placeholder="00.00">
+                                            <input type="number" name="value" class="form-control @if($errors->has('value')) border-danger @endif" placeholder="00.00" value="{{old('value')}}">
                                             <span class="text-danger"><small>{{ $errors->first('value')}}</small></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group1">
                                             <label class="form-control-label">Características<span class="text-muted">(Obligatorio)</span></label>
-                                            <input type="text" name="feature" class="form-control @if($errors->has('feature')) border-danger @endif" placeholder="RAM, Disco duro, Procesador... ">
+                                            <input type="text" name="feature" class="form-control @if($errors->has('feature')) border-danger @endif" placeholder="RAM, Disco duro, Procesador... " value="{{old('feature')}}">
                                             <span class="text-danger"><small>{{ $errors->first('feature')}}</small></span>
                                         </div>
                                     </div>
