@@ -56,7 +56,7 @@
                         @foreach($safeguards as $safeguard)
                             <tr>
                                 <th scope="row">
-                                    <a class="btn btn-sm btn-outline-secondary ni ni-paper-diploma" href="{{url('safeguards/pdf/'.$safeguard->id)}}" ></a>
+                                    <a class="btn btn-sm btn-outline-secondary ni ni-paper-diploma" href="{{url('safeguards/pdf/'.$safeguard->id)}}" target="__blank" ></a>
                                 </th>
                                 <th scope="row">
                                     {{$safeguard->employee->name}}
