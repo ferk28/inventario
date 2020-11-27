@@ -71,6 +71,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="card-body">
+                        {{$bosses->render()}}
+                    </div>
                 </div>
             </div>
         </div>

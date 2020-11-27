@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Boss;
 use App\Employee;
+use App\User;
 use App\Http\Requests\EmployeeFormRequest;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::all();
+        $employees = Employee::paginate(10);
         return view('employees.index', compact('employees'));
     }
 

@@ -20,7 +20,7 @@ class BossController extends Controller
      */
     public function index()
     {
-        $bosses = Boss::all();
+        $bosses = Boss::paginate(10);
         return view('bosses.index', compact('bosses'));
     }
 

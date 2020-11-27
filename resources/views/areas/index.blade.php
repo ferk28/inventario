@@ -73,6 +73,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="card-body">
+                        {{$areas->render()}}
+                    </div>
                 </div>
             </div>
         </div>

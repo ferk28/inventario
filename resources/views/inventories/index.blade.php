@@ -93,6 +93,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="card-body">
+                        {{$inventories->render()}}
+                    </div>
                 </div>
             </div>
         </div>

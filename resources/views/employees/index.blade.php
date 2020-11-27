@@ -70,7 +70,9 @@
                         </tbody>
                     </table>
                 </div>
-                {{$areas->links()}}
+                <div class="card-body">
+                    {{$employees->render()}}
+                </div>
             </div>
         </div>
     </div>
