@@ -32,7 +32,7 @@
                             <label class="form-control-label">Nombre del área <span class="text-muted">(Obligatorio)</span></label>
                             <select class="form-control" name="area_id" id="area_id">
                                 @foreach($areas as $area)
-                                    <option value="{{$area['id']}}">{{$area['name']}}</option>
+                                    <option {{old('area_id', $boss->area_id) == $area->id ? 'selected' : ''}} value="{{$area->id}}">{{$area->name}}</option>
                                 @endforeach
                             </select>
                             <span class="text-danger"><small>{{ $errors->first('employee_id')}}</small></span>

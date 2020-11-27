@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Area;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\AreaFormRequest;
 use App\Http\Requests\AreaEditFormRequest;
@@ -21,7 +22,7 @@ class AreaController extends Controller
      */
     public function index()
     {
-        $areas = Area::all();
+        $areas = Area::paginate(3);
         return view('areas.index', compact('areas'));
     }
 

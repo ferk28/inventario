@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <select class="form-control @if($errors->has('boss_id')) border-danger @endif" name="boss_id" id="boss_id">
                                     @foreach($bosses as $boss)
-                                        <option value="{{$boss['id']}}">{{$boss['name']}}</option>
+                                        <option {{old('boss_id', $employee->boss_id) == $boss->id ? 'selected' : ''}} value="{{$boss->id}}">{{$boss->name}}</option>
                                     @endforeach
                                 </select>
                                 <span class="text-danger"><small>{{ $errors->first('boss_id')}}</small></span>

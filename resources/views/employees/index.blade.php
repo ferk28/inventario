@@ -70,6 +70,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{$areas->links()}}
             </div>
         </div>
     </div>
