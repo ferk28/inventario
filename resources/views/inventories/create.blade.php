@@ -39,11 +39,54 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Serial<span class="text-muted">(Obligatorio)</span></label>
+                            <!--Table-->
+{{--                            <div class="form-group">
+                                <label class="form-control-label">Serial</label>
                                 <input name="serial" type="text"  class="form-control @if($errors->has('serial')) border-danger @endif" placeholder="S/N - Serial" value="{{old('serial')}}">
                                 <span class="text-danger"><small>{{ $errors->first('serial')}}</small></span>
+                            </div>--}}
+
+                            <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Serial</th>
+                                        <th scope="col" style="width: 120px">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <td><input type="text" name="txt_serial[]" class="form-control"></td>
+                                    <td><input type="button" name="btn_serial" class="btn btn-primary" id="btn_add"><i class="ni ni-bullet-list-67"></i></td>
+{{--                                    @foreach($inventories as $inventory)
+                                        <tr>
+                                            <th scope="row">
+                                                <form action="{{ url('/inventories/'.$inventory->id) }}">
+                                                    <a class="btn btn-sm btn-group-justified ni ni-bullet-list-67" href=""></a>
+                                                </form>
+                                            </th>
+                                            <th scope="row">
+                                                {{$inventory->brand}}
+                                            </th>
+                                            <td>
+                                                {{$inventory->serial}}
+                                            </td>
+                                            <td>
+                                                <form action="{{ url('/inventories/'.$inventory->id) }}" method="post" >
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/inventories/'.$inventory->id.'/edit') }}"></a>
+                                                    <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminar de tu corazon? ');"></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach--}}
+                                    </tbody>
+                                </table>
                             </div>
+
+
+
                             <div class="form-group1">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -68,7 +111,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label">Precio<span class="text-muted">(Obligatorio)</span></label>
                                             <input type="number" name="value" class="form-control @if($errors->has('value')) border-danger @endif" placeholder="00.00" value="{{old('value')}}">
-                                            <span class="text-danger"><small>{{ $errors->first('value')}}</small></span>
+                                            <span clasas="text-danger"><small>{{ $errors->first('value')}}</small></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -82,8 +125,8 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">Descripción</label>
-                                    <textarea class="form-control" name="description" rows="3" placeholder="Escríbe aquí tu descripción del artículo..."></textarea>
-                                    <span class="text-danger"><small>{{ $errors->first('description')}}</small></span>
+                                <textarea class="form-control" name="description" rows="3" placeholder="Escríbe aquí tu descripción del artículo..."></textarea>
+                                <span class="text-danger"><small>{{ $errors->first('description')}}</small></span>
                             </div>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </form>
@@ -91,6 +134,18 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#btn_add').on('click',function (){
+                    var html='';
+                    html+='<tr>';
+                    html+='<td><input type="text" name="serial" class="form-control"></td>';
+                    html+='<td><input type="button" name="serial" class="btn btn-danger" id="btn_remove"><i class="ni ni-bullet-list-67"></i></td>';
+                    html+='</tr>';
+                    $('tbody').append(html);
+                })
+            })
+        </script>
         <!-- Footer -->
         @include('home.footer')
     </div>

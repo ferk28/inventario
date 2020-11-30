@@ -42,8 +42,9 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
+                                <th scope="col">Ver</th>
                                 <th scope="col">Nombre de la marca</th>
-                                <th scope="col">Serial</th>
+                                <th scope="col">Cantidad</th>
                                 <th scope="col">Tipo</th>
                                 <th scope="col">Modelo</th>
                                 <th scope="col">Color</th>
@@ -56,6 +57,11 @@
                             <tbody>
                             @foreach($inventories as $inventory)
                                 <tr>
+                                    <th scope="row">
+                                        <form action="{{ url('/inventories/'.$inventory->id) }}">
+                                            <a class="btn btn-sm btn-group-justified ni ni-bullet-list-67" href=""></a>
+                                        </form>
+                                    </th>
                                     <th scope="row">
                                         {{$inventory->brand}}
                                     </th>
