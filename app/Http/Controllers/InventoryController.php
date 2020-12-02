@@ -44,18 +44,18 @@ class InventoryController extends Controller
     public function store(InventoryFormRequest $request)
     {
         //dd($request->all());
-                $inventory = new Inventory();
-                $inventory->brand = $request->input('brand');
-                $inventory->serial = $request->input('serial');
-                $inventory->type = $request->input('type');
-                $inventory->model = $request->input('model');
-                $inventory->color = $request->input('color');
-                $inventory->value = $request->input('value');
-                $inventory->feature = $request->input('feature');
-                $inventory->description = $request->input('description');
-                $inventory->user_id = Auth::user()->id;
-                $inventory->save();
-                return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
+        $inventory = new Inventory();
+        $inventory->brand = $request->input('brand');
+        $inventory->serial = $request->input('serial');
+        $inventory->type = $request->input('type');
+        $inventory->model = $request->input('model');
+        $inventory->color = $request->input('color');
+        $inventory->value = $request->input('value');
+        $inventory->feature = $request->input('feature');
+        $inventory->description = $request->input('description');
+        $inventory->user_id = Auth::user()->id;
+        $inventory->save();
+        return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
     }
 
     /**
@@ -66,7 +66,7 @@ class InventoryController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -113,5 +113,17 @@ class InventoryController extends Controller
     {
         $inventory->delete();
         return redirect()->route('inventories.index')->with('message-alert',' - El area ha sido borrada permanentemente');
+    }
+
+    public function addMore(Request $request)
+    {
+        $request -> validate([
+            'addmore.*.serial' => 'required',
+        ]);
+
+        foreach ($request->addmore as $key => $value){
+            Inventory::create($value);
+        }
+        return back()->with('success', 'Record successfully');
     }
 }

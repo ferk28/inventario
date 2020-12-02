@@ -39,53 +39,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--Table-->
+                            <!--Start Table-->
 {{--                            <div class="form-group">
                                 <label class="form-control-label">Serial</label>
                                 <input name="serial" type="text"  class="form-control @if($errors->has('serial')) border-danger @endif" placeholder="S/N - Serial" value="{{old('serial')}}">
                                 <span class="text-danger"><small>{{ $errors->first('serial')}}</small></span>
                             </div>--}}
 
-                            <div class="table-responsive">
-                                <!-- Projects table -->
-                                <table class="table align-items-center table-flush">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Serial</th>
-                                        <th scope="col" style="width: 120px">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <td><input type="text" name="txt_serial[]" class="form-control"></td>
-                                    <td><input type="button" name="btn_serial" class="btn btn-primary" id="btn_add"><i class="ni ni-bullet-list-67"></i></td>
-{{--                                    @foreach($inventories as $inventory)
-                                        <tr>
-                                            <th scope="row">
-                                                <form action="{{ url('/inventories/'.$inventory->id) }}">
-                                                    <a class="btn btn-sm btn-group-justified ni ni-bullet-list-67" href=""></a>
-                                                </form>
-                                            </th>
-                                            <th scope="row">
-                                                {{$inventory->brand}}
-                                            </th>
-                                            <td>
-                                                {{$inventory->serial}}
-                                            </td>
-                                            <td>
-                                                <form action="{{ url('/inventories/'.$inventory->id) }}" method="post" >
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/inventories/'.$inventory->id.'/edit') }}"></a>
-                                                    <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminar de tu corazon? ');"></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach--}}
-                                    </tbody>
-                                </table>
+                            <div class="input-group mb-3" id="row">
+                                <input type="text" class="form-control" placeholder="Serial del producto" aria-label="Recipient's username" name="addmore[0][serial]">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary ni ni-fat-add" type="button" name="add" id="add"></button>
+                                </div>
                             </div>
 
-
+                            <!--End Table-->
 
                             <div class="form-group1">
                                 <div class="row">
@@ -135,16 +103,20 @@
             </div>
         </div>
         <script type="text/javascript">
-            $(document).ready(function(){
-                $('#btn_add').on('click',function (){
-                    var html='';
-                    html+='<tr>';
-                    html+='<td><input type="text" name="serial" class="form-control"></td>';
-                    html+='<td><input type="button" name="serial" class="btn btn-danger" id="btn_remove"><i class="ni ni-bullet-list-67"></i></td>';
-                    html+='</tr>';
-                    $('tbody').append(html);
-                })
-            })
+
+            var i = 0;
+
+            $("#add").click(function(){
+
+                ++i;
+
+                $("#dynamicTable").append('<div class="input-group mb-3" id="row"><input type="text" class="form-control" placeholder="Serial del producto" aria-label="Recipient\'s username" name="addmore[0][serial]"><div class="input-group-append"><button class="btn btn-outline-primary ni ni-fat-delete remove-tr" type="button"></button></div></div>');
+
+            });
+            $(document).on('click', '.remove-tr', function(){
+
+                $(this).parents('tr').remove();
+            });
         </script>
         <!-- Footer -->
         @include('home.footer')
