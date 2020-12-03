@@ -2,7 +2,14 @@
 @section('subtitle','Inventario')
 @section('dir','Inventario')
 @section('action','Nuevo')
+
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/dragula.min.css') }}">
+@endsection
+
+
 @section('content')
+
     <div class="container-fluid mt--6">
         <!-- Page content -->
         <div class="row">
@@ -45,16 +52,19 @@
                                 <input name="serial" type="text"  class="form-control @if($errors->has('serial')) border-danger @endif" placeholder="S/N - Serial" value="{{old('serial')}}">
                                 <span class="text-danger"><small>{{ $errors->first('serial')}}</small></span>
                             </div>--}}
-
-                            <div class="input-group mb-3" id="row">
-                                <input type="text" class="form-control" placeholder="Serial del producto" aria-label="Recipient's username" name="addmore[0][serial]">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-primary ni ni-fat-add" type="button" name="add" id="add"></button>
+                            <div id="series">
+                            <label class="form-control-label">Serial</label>
+                            @for($i=0; $i<2; ++$i)
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Serial del producto" aria-label="Recipient's username" name="">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-danger btn-move ni ni-fat-remove" type="button"><span class="fa fa-reorder"></span></button>
+                                        <button class="btn btn-outline-primary btn-remove ni ni-bullet-list-67" type="button"><span class="fa fa-remove"></span></button>
+                                    </div>
                                 </div>
+                            @endfor
                             </div>
-
                             <!--End Table-->
-
                             <div class="form-group1">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -102,23 +112,18 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-
-            var i = 0;
-
-            $("#add").click(function(){
-
-                ++i;
-
-                $("#dynamicTable").append('<div class="input-group mb-3" id="row"><input type="text" class="form-control" placeholder="Serial del producto" aria-label="Recipient\'s username" name="addmore[0][serial]"><div class="input-group-append"><button class="btn btn-outline-primary ni ni-fat-delete remove-tr" type="button"></button></div></div>');
-
-            });
-            $(document).on('click', '.remove-tr', function(){
-
-                $(this).parents('tr').remove();
-            });
-        </script>
         <!-- Footer -->
         @include('home.footer')
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/dragula.min.js') }}"></script>
+    <script>
+        dragula([document.getElementById('series')], {
+            moves: function (el, container, handle) {
+                return handle.classList.contains('btn-move');
+            }
+        });
+    </script>
 @endsection
