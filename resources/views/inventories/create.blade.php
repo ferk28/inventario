@@ -3,9 +3,7 @@
 @section('dir','Inventario')
 @section('action','Nuevo')
 
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('css/dragula.min.css') }}">
-@endsection
+
 
 
 @section('content')
@@ -52,17 +50,32 @@
                                 <input name="serial" type="text"  class="form-control @if($errors->has('serial')) border-danger @endif" placeholder="S/N - Serial" value="{{old('serial')}}">
                                 <span class="text-danger"><small>{{ $errors->first('serial')}}</small></span>
                             </div>--}}
-                            <div id="series">
-                            <label class="form-control-label">Serial</label>
-                            @for($i=0; $i<2; ++$i)
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Serial del producto" aria-label="Recipient's username" name="">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-danger btn-move ni ni-fat-remove" type="button"><span class="fa fa-reorder"></span></button>
-                                        <button class="btn btn-outline-primary btn-remove ni ni-bullet-list-67" type="button"><span class="fa fa-remove"></span></button>
-                                    </div>
-                                </div>
-                            @endfor
+                            <div class="table-responsive">
+                                <!-- Projects table -->
+                                <table class="table align-items-center table-flush">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">Serial</th>
+                                            <th scope="col">
+                                                <form action="">
+                                                    <a class="btn btn-sm btn-group-justified"><span class="ni ni-fat-add"></span></a>
+                                                </form>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody  >
+                                        @for($i=0; $i<2; ++$i)
+                                            <tr>
+                                                <th>
+                                                    <input name="type" type="text" class="form-control" placeholder="Serial" value="">
+                                                </th>
+                                                <th>
+                                                    <a class="btn btn-group-lg btn-move btn-group-justified"><span class="ni ni-bullet-list-67"></span></a>
+                                                </th>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
                             </div>
                             <!--End Table-->
                             <div class="form-group1">
@@ -116,8 +129,7 @@
         @include('home.footer')
     </div>
 @endsection
-
-@section('scripts')
+@section('scripts'    )
     <script src="{{ asset('js/dragula.min.js') }}"></script>
     <script>
         dragula([document.getElementById('series')], {
