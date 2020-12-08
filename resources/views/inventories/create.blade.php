@@ -3,9 +3,6 @@
 @section('dir','Inventario')
 @section('action','Nuevo')
 
-
-
-
 @section('content')
 
     <div class="container-fluid mt--6">
@@ -52,28 +49,24 @@
                             </div>--}}
                             <div class="table-responsive">
                                 <!-- Projects table -->
-                                <table class="table align-items-center table-flush">
+                                <table class="table align-items-center table-flush" id="table_serial">
                                     <thead class="thead-light">
                                         <tr>
                                             <th scope="col">Serial</th>
                                             <th scope="col">
-                                                <form action="">
-                                                    <a class="btn btn-sm btn-group-justified"><span class="ni ni-fat-add"></span></a>
-                                                </form>
+                                                <a class="btn btn-sm btn-group-justified" id="btn_new_serial"><span class="ni ni-fat-add"></span></a>
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody  >
-                                        @for($i=0; $i<2; ++$i)
+                                    <tbody>
                                             <tr>
-                                                <th>
-                                                    <input name="type" type="text" class="form-control" placeholder="Serial" value="">
-                                                </th>
-                                                <th>
+                                                <td>
+                                                    <input type="text" class="form-control" placeholder="Serial" value="">
+                                                </td>
+                                                <td>
                                                     <a class="btn btn-group-lg btn-move btn-group-justified"><span class="ni ni-bullet-list-67"></span></a>
-                                                </th>
+                                                </td>
                                             </tr>
-                                        @endfor
                                     </tbody>
                                 </table>
                             </div>
@@ -129,13 +122,25 @@
         @include('home.footer')
     </div>
 @endsection
-@section('scripts'    )
-    <script src="{{ asset('js/dragula.min.js') }}"></script>
+@section('scripts')
     <script>
-        dragula([document.getElementById('series')], {
-            moves: function (el, container, handle) {
-                return handle.classList.contains('btn-move');
-            }
-        });
+        $(document).on('ready', funPrincipal);
+
+        function funPrincipal()
+        {
+            $("#btn_new_serial").on('click', funNewSerial);
+        }
+        function funNewSerial()
+        {
+            $("#table_serial")
+            .append
+            (
+                $('<tr>')
+                .append
+                (
+                    $('<input>').attr('type','text').className('form-control')
+                )
+            )
+        }
     </script>
 @endsection
