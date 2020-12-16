@@ -47,30 +47,28 @@
                                 <input name="serial" type="text"  class="form-control @if($errors->has('serial')) border-danger @endif" placeholder="S/N - Serial" value="{{old('serial')}}">
                                 <span class="text-danger"><small>{{ $errors->first('serial')}}</small></span>
                             </div>--}}
+
+
+                        <!-- Projects table -->
                             <div class="table-responsive">
-                                <!-- Projects table -->
-                                <table class="table align-items-center table-flush" id="table_serial">
+                                <table class="table align-items-center table-flush">
                                     <thead class="thead-light">
-                                        <tr>
-                                            <th scope="col">Serial</th>
-                                            <th scope="col">
-                                                <a class="btn btn-sm btn-group-justified" id="btn_new_serial"><span class="ni ni-fat-add"></span></a>
-                                            </th>
-                                        </tr>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" placeholder="Serial" name="task_name" id="task_name" value="">
+                                        </td>
+                                        <td>
+                                            <button id="addMore" class="btn btn-success btn-sm">Add More</button>
+                                        </td>
                                     </thead>
-                                    <tbody>
-                                            <tr>
-                                                <td>
-                                                    <input type="text" class="form-control" placeholder="Serial" value="">
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-group-lg btn-move btn-group-justified"><span class="ni ni-bullet-list-67"></span></a>
-                                                </td>
-                                            </tr>
+                                    <tbody id="addRow" class="addRow">
+
                                     </tbody>
                                 </table>
+                                <button type="submit" class="btn btn-success btn-sm">Submit</button>
                             </div>
                             <!--End Table-->
+
+
                             <div class="form-group1">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -122,25 +120,23 @@
         @include('home.footer')
     </div>
 @endsection
-@section('scripts')
-    <script>
-        $(document).on('ready', funPrincipal);
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 
-        function funPrincipal()
-        {
-            $("#btn_new_serial").on('click', funNewSerial);
-        }
-        function funNewSerial()
-        {
-            $("#table_serial")
-            .append
-            (
-                $('<tr>')
-                .append
-                (
-                    $('<input>').attr('type','text').className('form-control')
-                )
-            )
-        }
-    </script>
-@endsection
+<script id="document-template" type="text/x-handlebars-template">
+    <tr class="delete_add_more_item" id="delete_add_more_item">
+        <td>
+            <input type="text" name="task_name[]" value="@{{ task_name }}">
+        </td>
+        <td>
+            <input type="number" class="cost" name="cost[]" value="@{{ cost }}">
+        </td>
+
+        <td>
+            <i class="removeaddmore" style="cursor:pointer;color:red;">Remove</i>
+        </td>
+    </tr>
+</script>
+
+<script type="text/javascript">
