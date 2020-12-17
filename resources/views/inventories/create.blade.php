@@ -3,6 +3,9 @@
 @section('dir','Inventario')
 @section('action','Nuevo')
 
+
+
+
 @section('content')
 
     <div class="container-fluid mt--6">
@@ -41,13 +44,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <!--Start Table-->
-{{--                            <div class="form-group">
-                                <label class="form-control-label">Serial</label>
-                                <input name="serial" type="text"  class="form-control @if($errors->has('serial')) border-danger @endif" placeholder="S/N - Serial" value="{{old('serial')}}">
-                                <span class="text-danger"><small>{{ $errors->first('serial')}}</small></span>
-                            </div>--}}
 
+                            <div class="card-body">
+                                <div class="form-group1">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group1">
+                                                <label class="form-control-label">Tipo<span class="text-muted">(Obligatorio)</span></label>
+                                                <input name="type" type="text" class="form-control @if($errors->has('type')) border-danger @endif" placeholder="Computadora, laptop, celular etc..." value="{{old('type')}}">
+                                                <span class="text-danger"><small>{{ $errors->first('type')}}</small></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         <!-- Projects table -->
                             <div class="table-responsive">
@@ -61,11 +71,19 @@
                                         </td>
                                     </thead>
                                     <tbody id="addRow" class="addRow">
-
+                                        <tr>
+                                            <th>
+                                                <input name="type" type="text" class="form-control" placeholder="Serial" value="">
+                                            </th>
+                                            <th>
+                                                <a class="btn btn-group-lg btn-move btn-group-justified"><span class="ni ni-bullet-list-67"></span></a>
+                                            </th>
+                                        </tr>
                                     </tbody>
                                 </table>
                                 <button type="submit" class="btn btn-success btn-sm">Submit</button>
                             </div>
+
                             <!--End Table-->
 
 
@@ -120,23 +138,3 @@
         @include('home.footer')
     </div>
 @endsection
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-
-<script id="document-template" type="text/x-handlebars-template">
-    <tr class="delete_add_more_item" id="delete_add_more_item">
-        <td>
-            <input type="text" name="task_name[]" value="@{{ task_name }}">
-        </td>
-        <td>
-            <input type="number" class="cost" name="cost[]" value="@{{ cost }}">
-        </td>
-
-        <td>
-            <i class="removeaddmore" style="cursor:pointer;color:red;">Remove</i>
-        </td>
-    </tr>
-</script>
-
-<script type="text/javascript">
