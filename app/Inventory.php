@@ -7,5 +7,6 @@ use App\Serie;
 
 class Inventory extends Model
 {
-    protected $guarded = [];
+    public $table = "tagslist";
+    public $fillable = ['name'];
 }

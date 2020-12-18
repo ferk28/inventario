@@ -115,15 +115,4 @@ class InventoryController extends Controller
         return redirect()->route('inventories.index')->with('message-alert',' - El area ha sido borrada permanentemente');
     }
 
-    public function addMore(Request $request)
-    {
-        $request -> validate([
-            'addmore.*.serial' => 'required',
-        ]);
-
-        foreach ($request->addmore as $key => $value){
-            Inventory::create($value);
-        }
-        return back()->with('success', 'Record successfully');
-    }
 }

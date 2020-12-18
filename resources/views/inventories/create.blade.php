@@ -44,48 +44,9 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="card-body">
-                                <div class="form-group1">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group1">
-                                                <label class="form-control-label">Tipo<span class="text-muted">(Obligatorio)</span></label>
-                                                <input name="type" type="text" class="form-control @if($errors->has('type')) border-danger @endif" placeholder="Computadora, laptop, celular etc..." value="{{old('type')}}">
-                                                <span class="text-danger"><small>{{ $errors->first('type')}}</small></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        <!-- Projects table -->
-                            <div class="table-responsive">
-                                <table class="table align-items-center table-flush">
-                                    <thead class="thead-light">
-                                        <td>
-                                            <input type="text" class="form-control form-control-sm" placeholder="Serial" name="task_name" id="task_name" value="">
-                                        </td>
-                                        <td>
-                                            <button id="addMore" class="btn btn-success btn-sm">Add More</button>
-                                        </td>
-                                    </thead>
-                                    <tbody id="addRow" class="addRow">
-                                        <tr>
-                                            <th>
-                                                <input name="type" type="text" class="form-control" placeholder="Serial" value="">
-                                            </th>
-                                            <th>
-                                                <a class="btn btn-group-lg btn-move btn-group-justified"><span class="ni ni-bullet-list-67"></span></a>
-                                            </th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <button type="submit" class="btn btn-success btn-sm">Submit</button>
-                            </div>
+                            <!--Start Table-->
 
                             <!--End Table-->
-
 
                             <div class="form-group1">
                                 <div class="row">
@@ -105,6 +66,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group1">
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -128,13 +90,19 @@
                                 <textarea class="form-control" name="description" rows="3" placeholder="Escríbe aquí tu descripción del artículo..."></textarea>
                                 <span class="text-danger"><small>{{ $errors->first('description')}}</small></span>
                             </div>
-                            <button type="submit" class="btn btn-primary">Guardar</button>
+{{--                            <button type="submit" class="btn btn-primary">Guardar</button>--}}
+                            <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Footer -->
         @include('home.footer')
     </div>
 @endsection
+
+
+
