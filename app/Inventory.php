@@ -7,6 +7,5 @@ use App\Serie;
 
 class Inventory extends Model
 {
-    public $table = "tagslist";
-    public $fillable = ['name'];
+
 }
