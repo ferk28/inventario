@@ -16,7 +16,7 @@ class CreateInventoriesTable extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
             $table->string('brand');
-            $table->string('serial')->unique();
+            $table->string('serial')->nullable();
             $table->string('type');
             $table->string('model');
             $table->string ('color')->nullable();

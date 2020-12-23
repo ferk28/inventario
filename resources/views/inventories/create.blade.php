@@ -45,6 +45,17 @@
                                 </div>
                             </div>
                             <!--Start Table-->
+                            <div class="form-group1">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Serial<span class="text-muted">(Obligatorio)</span></label>
+                                            <input name="serial" type="text"  class="form-control @if($errors->has('serial')) border-danger @endif" placeholder="S/N - Serial" value="{{old('serial')}}">
+                                            <span class="text-danger"><small>{{ $errors->first('serial')}}</small></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <!--End Table-->
 
@@ -73,7 +84,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label">Precio<span class="text-muted">(Obligatorio)</span></label>
                                             <input type="number" name="value" class="form-control @if($errors->has('value')) border-danger @endif" placeholder="00.00" value="{{old('value')}}">
-                                            <span clasas="text-danger"><small>{{ $errors->first('value')}}</small></span>
+                                            <span class="text-danger"><small>{{ $errors->first('value')}}</small></span>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -85,14 +96,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group1">
                                 <label class="form-control-label">Descripción</label>
                                 <textarea class="form-control" name="description" rows="3" placeholder="Escríbe aquí tu descripción del artículo..."></textarea>
                                 <span class="text-danger"><small>{{ $errors->first('description')}}</small></span>
                             </div>
-{{--                            <button type="submit" class="btn btn-primary">Guardar</button>--}}
-                            <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
+                            <button type="submit" class="btn btn-primary">Guardar</button>
 
+{{--                            <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />--}}
                         </form>
                     </div>
                 </div>
@@ -103,6 +114,3 @@
         @include('home.footer')
     </div>
 @endsection
-
-
-

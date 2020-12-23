@@ -35,12 +35,6 @@ class InventoryController extends Controller
         return view('inventories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(InventoryFormRequest $request)
     {
         //dd($request->all());
@@ -89,7 +83,7 @@ class InventoryController extends Controller
      */
     public function update(InventoryEditFormRequest $request, Inventory $inventory)
     {
-//        dd($request->all());
+        //dd($request->all());
         $inventory->brand = $request->input('brand');
         $inventory->serial = $request->input('serial');
         $inventory->type = $request->input('type');
@@ -111,8 +105,9 @@ class InventoryController extends Controller
      */
     public function destroy(Inventory $inventory)
     {
+        $deletedNAme = $inventory->name;
         $inventory->delete();
-        return redirect()->route('inventories.index')->with('message-alert',' - El area ha sido borrada permanentemente');
+        return redirect()->route('inventories.index')->with('message-alert',' - El area'. $deletedNAme . 'ha sido borrada permanentemente');
     }
 
 }

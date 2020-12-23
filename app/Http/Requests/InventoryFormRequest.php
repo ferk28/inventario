@@ -26,10 +26,10 @@ class InventoryFormRequest extends FormRequest
         return [
             'brand'=>'min:1|max:25',
             'type'=>'min:1|max:25',
-            'serial'=>'required|min:1|max:25|unique:inventories,serial',
             'model'=>'min:1|max:25',
+            //'serial'=>'min:1|max:25',
             'value'=>'numeric',
-            'features'=>'min:1|max:100',
+            'feature'=>'min:1|max:100',
         ];
     }
 }
