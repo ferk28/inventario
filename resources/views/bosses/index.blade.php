@@ -45,6 +45,9 @@
                             <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Area</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Teléfono</th>
+                                <th scope="col">No. Control</th>
                                 <th scope="col">Opciones</th>
                             </tr>
                             </thead>
@@ -55,8 +58,16 @@
                                         {{$boss->name}}
                                     </th>
                                     <td>
-                                        {{$boss->area->name}}
 
+                                    </td>
+                                    <td>
+                                        {{$boss->email}}
+                                    </td>
+                                    <td>
+                                        {{$boss->phone}}
+                                    </td>
+                                    <td>
+                                        {{$boss->no_control}}
                                     </td>
                                     <td>
                                         <form action="{{ url('/bosses/'.$boss->id) }}" method="post" >

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Area;
-use App\Boss;
+use App\User;
 use App\Http\Requests\BossFormRequest;
 
 
@@ -20,7 +20,7 @@ class BossController extends Controller
      */
     public function index()
     {
-        $bosses = Boss::paginate(10);
+        $bosses = User::bosses()->paginate(10);
         return view('bosses.index', compact('bosses'));
     }
 
@@ -44,11 +44,14 @@ class BossController extends Controller
     public function store(BossFormRequest $request)
     {
         //dd($request->all());
-        $boss = new Boss();
-        $boss->name = $request->input('name');
-        $boss->area_id = $request->input('area_id');
-        $boss->save();
-        return redirect('/bosses')->with('message',' - El jefe ha sido agregado satisfactoriamente!');
+        User::create(
+            $request->only('name', 'email', 'phone', 'no_control')
+            +[
+                'role' => 'boss',
+                'password' => bcrypt($request->input('password'))
+            ]
+        );
+        return redirect('/bosses')->with('message',' - El patron :D ha sido agregado satisfactoriamente! :D');
     }
 
     /**
@@ -68,10 +71,10 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Boss $boss)
+    public function edit($id)
     {
-        $areas = Area::all();
-        return view('bosses.edit', compact('areas', 'boss'));
+        $boss = User::bosses()->findOrFail($id);
+        return view('bosses.edit', compact('boss'));
     }
 
     /**
@@ -81,13 +84,20 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BossFormRequest $request, Boss $boss)
+    public function update(BossFormRequest $request, $id)
     {
-//        dd($request->all());
-        $boss->name = $request->input('name');
-        $boss->area_id = $request->input('area_id');
-        $boss->save();
-        return redirect()->route('bosses.index')->with('message',' - El patron ha sido actualizado satisfactoriamente');
+        //dd($request->all());
+        $user = User::bosses()->findOrFail($id);
+
+        $data = $request->only('name', 'email', 'phone', 'no_control');
+
+        $password = $request->input('password');
+        if($password)
+            $data += ['password' => bcrypt($password)];
+
+        $user->fill($data);
+        $user->save();
+        return redirect()->route('bosses.index')->with('message',' - El patron :D ha sido actualizado satisfactoriamente');
     }
 
     /**
@@ -99,6 +109,6 @@ class BossController extends Controller
     public function destroy(Boss $boss)
     {
         $boss->delete();
-        return redirect()->route('bosses.index')->with('message-alert',' - El empleado ha sido borrado permanentemente');
+        return redirect()->route('bosses.index')->with('message-alert',' - El patrón :D se ha borrado permanentemente');
     }
 }

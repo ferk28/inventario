@@ -14,11 +14,13 @@ php_sqlsrv_72_ts_x64
 php_pdo_sqlsrv_72_ts_x64
 
 
-www/project
+www/project -->
 
-composer update
-php artisan key:generate
-php artisan serve
+λ composer update
+λ php artisan key:generate
+λ php artisan serve
+
+λ composer require laravel/helpers
 
 Template:
 https://github.com/creativetimofficial/argon-dashboard
@@ -29,4 +31,17 @@ INSTALL GIT
 git init /
 git add . /
 git commit -m "name_commit" /
+
+Pretty Url
+
+For url change the archive hosts from your computer.
+Something like this.
+
+C:\Windows\System32\drivers\etc\hosts
+# localhost name resolution is handled within DNS itself.
+#	127.0.0.1       localhost
+#	::1             localhost
+127.0.0.1      insai-inventario.test 
+127.0.0.1      inventario.test   
+
 

@@ -43,8 +43,11 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                         <tr>
-                            <th scope="col">Nombre empleado</th>
-                            <th scope="col">Jefe de area</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Area</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">No. Control</th>
                             <th scope="col">Opciones</th>
                         </tr>
                         </thead>
@@ -55,14 +58,23 @@
                                     {{$employee->name}}
                                 </th>
                                 <td>
-                                    {{$employee->boss->name}}
+
+                                </td>
+                                <td>
+                                    {{$employee->email}}
+                                </td>
+                                <td>
+                                    {{$employee->phone}}
+                                </td>
+                                <td>
+                                    {{$employee->no_control}}
                                 </td>
                                 <td>
                                     <form action="{{ url('/employees/'.$employee->id) }}" method="post" >
                                         @csrf
                                         @method('DELETE')
-                                        <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/employees/'.$employee->id.'/edit') }}"></a>
-                                        <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminar de tu corazon? ');"></button>
+                                        <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/bosses/'.$employee->id.'/edit') }}"></a>
+                                        <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminarlo de tu corazon y de nuestros registros?');"></button>
                                     </form>
                                 </td>
                             </tr>
