@@ -46,12 +46,13 @@ class BossController extends Controller
         //dd($request->all());
         User::create(
             $request->only('name', 'email', 'phone', 'no_control')
-            +[
+            + [
                 'role' => 'boss',
                 'password' => bcrypt($request->input('password'))
             ]
         );
-        return redirect('/bosses')->with('message',' - El patron :D ha sido agregado satisfactoriamente! :D');
+        dd($request->all());
+        //return redirect('/bosses')->with('message',' - El patron :D ha sido agregado satisfactoriamente! :D');
     }
 
     /**

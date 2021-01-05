@@ -3,11 +3,19 @@
 
 SQLSERVER WINDOWS:
 
-ODBC Driver for SQL Server
+*ODBC Driver for SQL Server
 https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15
 
 Microsoft Drivers for PHP for SQL Server
 https://docs.microsoft.com/en-us/sql/connect/php/download-drivers-php-sql-server?view=sql-server-ver15
+
+*Microsoft Drivers for PHP for MongoDB
+php -v
+proccessor x64 - x86
+Thread Safe (TS)
+https://pecl.php.net/package/mongodb
+
+
 
 PHP Files Extension
 php_sqlsrv_72_ts_x64

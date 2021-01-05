@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label" for="password">Contraseña<span class="text-muted"> (Obligatorio)</span></label>
-                                <input name="no_control" class="form-control @if($errors->has('password')) border-danger @endif" placeholder="Contraseña" type="text" value="{{ old('password', str_random(8)) }}">
+                                <input name="no_control" class="form-control @if($errors->has('password')) border-danger @endif" placeholder="Contraseña" type="text" value="{{ str_random(8) }}" autocomplete="off">
                                 <span class="text-danger"><small>{{ $errors->first('password')}}</small></span>
                             </div>
                             <div class="form-group">
