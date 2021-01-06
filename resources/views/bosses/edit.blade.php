@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-control-label" for="password">Contraseña<span class="text-muted"> (Ingrese un valor, sólo si desea modificar la contraseña)</span></label>
-                            <input name="no_control" class="form-control @if($errors->has('password')) border-danger @endif" placeholder="Contraseña" type="text" value="">
+                            <input name="password" class="form-control @if($errors->has('password')) border-danger @endif" placeholder="Contraseña" type="text" value="">
                             <span class="text-danger"><small>{{ $errors->first('password')}}</small></span>
                         </div>
                         <div class="form-group">

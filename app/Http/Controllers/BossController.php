@@ -43,7 +43,6 @@ class BossController extends Controller
      */
     public function store(BossFormRequest $request)
     {
-        //dd($request->all());
         User::create(
             $request->only('name', 'email', 'phone', 'no_control')
             + [
@@ -51,8 +50,8 @@ class BossController extends Controller
                 'password' => bcrypt($request->input('password'))
             ]
         );
-        dd($request->all());
-        //return redirect('/bosses')->with('message',' - El patron :D ha sido agregado satisfactoriamente! :D');
+        //dd($request->all());
+        return redirect('/bosses')->with('message',' - El patron :D ha sido agregado satisfactoriamente! :D');
     }
 
     /**
@@ -90,11 +89,16 @@ class BossController extends Controller
         //dd($request->all());
         $user = User::bosses()->findOrFail($id);
 
-        $data = $request->only('name', 'email', 'phone', 'no_control');
+        $data = $request->only('name', 'phone', 'no_control');
 
         $password = $request->input('password');
-        if($password)
-            $data += ['password' => bcrypt($password)];
+        $email = $request->input('email');
+
+        if ($email = $user->email)
+            $data += ['email' => $email];
+            if($password)
+                $data += ['password' => bcrypt($password)];
+
 
         $user->fill($data);
         $user->save();
@@ -107,9 +111,10 @@ class BossController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Boss $boss)
+    public function destroy(User $boss)
     {
+        $bossName = $boss->name;
         $boss->delete();
-        return redirect()->route('bosses.index')->with('message-alert',' - El patrón :D se ha borrado permanentemente');
+        return redirect()->route('bosses.index')->with('message-alert',' - El patrón ' .$bossName. ' :D se ha borrado permanentemente');
     }
 }
