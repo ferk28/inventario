@@ -20,20 +20,23 @@ Route::get('/', function () {
 
 Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home');
-// Areas
-/*  Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/areas', 'AreaController@index');
-    Route::get('/areas/create', 'AreaController@create');
-    Route::get('/areas/{area}/edit', 'AreaController@edit');
-    Route::post('/areas', 'AreaController@store');*/
 
-Route::get('/safeguards/pdf/{id}', 'SafeguardController@PDFgenerator');
 
-Route::resources([
-    'areas' => AreaController::class,
-    'bosses' => BossController::class,
-    'employees' => EmployeeController::class,
-    'inventories' => InventoryController::class,
-    'safeguards' => SafeguardController::class,
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::resource('areas','AreaController');
+    Route::resource('bosses','BossController');
+    Route::resource('employees','EmployeeController');
+    Route::resource('inventories','InventoryController');
+    Route::resource('safeguards','SafeguardController');
+    Route::get('/safeguards/pdf/{id}', 'SafeguardController@PDFgenerator');
 
-]);
+    /*    Route::resources([
+        'areas' => AreaController::class,
+        'bosses' => BossController::class,
+        'employees' => EmployeeController::class,
+        'inventories' => InventoryController::class,
+        'safeguards' => SafeguardController::class,
+    ]);*/
+});
+
+

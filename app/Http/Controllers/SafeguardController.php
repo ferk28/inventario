@@ -10,10 +10,7 @@ use App\Safeguard;
 
 class SafeguardController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware('auth');
-    }
+
     /**
      * Display a listing of the resource.
      *
