@@ -92,12 +92,9 @@ class BossController extends Controller
         $data = $request->only('name', 'phone', 'no_control');
 
         $password = $request->input('password');
-        $email = $request->input('email');
 
-        if ($email = $user->email)
-            $data += ['email' => $email];
-            if($password)
-                $data += ['password' => bcrypt($password)];
+        if($password)
+            $data += ['password' => bcrypt($password)];
 
 
         $user->fill($data);

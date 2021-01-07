@@ -32,6 +32,11 @@
                             <span class="text-danger"><small>{{ $errors->first('email')}}</small></span>
                         </div>
                         <div class="form-group">
+                            <label class="form-control-label" for="password">Contraseña<span class="text-muted"> (Obligatorio)</span></label>
+                            <input name="password" class="form-control @if($errors->has('password')) border-danger @endif" placeholder="Contraseña" type="text" value="{{ str_random(8) }}" autocomplete="off">
+                            <span class="text-danger"><small>{{ $errors->first('password')}}</small></span>
+                        </div>
+                        <div class="form-group">
                             <label class="form-control-label" for="phone">Teléfono<span class="text-muted"> (Opcional)</span></label>
                             <input name="phone" class="form-control @if($errors->has('phone')) border-danger @endif" placeholder="(10 dígitos)" type="number" value="{{old('phone')}}">
                             <span class="text-danger"><small>{{ $errors->first('phone')}}</small></span>

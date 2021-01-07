@@ -1,5 +1,6 @@
 <!-- Nav items -->
 <ul class="navbar-nav">
+    @if (auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) === 'safeguards' ? 'active' : null }}" href="{{url('safeguards')}}">
             <i class="ni ni-tv-2 text-primary"></i>
@@ -37,6 +38,32 @@
             <span class="nav-link-text">Usuarios</span>
         </a>
     </li>--}}
+    @elseif (auth()->user()->role == 'boss')
+        <li class="nav-item">
+            <a class="nav-link {{ Request::segment(1) === 'safeguards' ? 'active' : null }}" href="{{url('safeguards')}}">
+                <i class="ni ni-tv-2 text-primary"></i>
+                <span class="nav-link-text">Responsivas</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::segment(1) === 'employees' ? 'active' : null }}" href="{{url('employees')}}">
+                <i class="ni ni-single-02 text-yellow"></i>
+                <span class="nav-link-text">Empleados</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Request::segment(1) === 'inventories' ? 'active' : null }}" href="{{url('inventories')}}">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">Inventario</span>
+            </a>
+        </li>
+        <li class="nav-item">
+        {{--        <a class="nav-link" href="examples/dashboard.html">
+                    <i class="ni ni-tie-bow text-green"></i>
+                    <span class="nav-link-text">Usuarios</span>
+                </a>
+            </li>--}}
+    @endif
 </ul>
 <!-- Divider -->
 <hr class="my-3">

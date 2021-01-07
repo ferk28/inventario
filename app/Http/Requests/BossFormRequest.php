@@ -25,7 +25,7 @@ class BossFormRequest extends FormRequest
     {
         return [
             'name'=>'required|min:1|max:100',
-            'email'=>'nullable|email|unique:users',
+            'email'=>'required|email',
             'phone'=>'nullable|digits:10',
             'no_control'=> 'nullable|digits:5',
         ];

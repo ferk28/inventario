@@ -21,21 +21,42 @@
                     <div class="card-body">
                         <form action="{{ url('employees/'.$employee->id) }}" method="POST">
                             @csrf
-                            @method('put')
+                            @method('PUT')
                             <div class="form-group">
-                                <label class="form-control-label" for="name">Nombre del empleado<span class="text-muted">(Obligatorio)</span></label>
-                            <input name="name" class="form-control @if($errors->has('name')) border-danger @endif" placeholder="Como aparecerá en su responsiva" type="text" value="{{old('name', $employee->name)}}" autofocus>
+                                <label class="form-control-label" for="name">Nombre <span class="text-muted"> (Obligatorio)</span></label>
+                                <input name="name" class="form-control @if($errors->has('name')) border-danger @endif" placeholder="Como aparecerá en su responsiva" type="text" value="{{old('name', $employee->name)}}" autofocus>
                                 <span class="text-danger"><small>{{ $errors->first('name')}}</small></span>
                             </div>
-                            <label class="form-control-label">Nombre del jefe en área<span class="text-muted">(Obligatorio)</span></label>
                             <div class="form-group">
-                                <select class="form-control @if($errors->has('boss_id')) border-danger @endif" name="boss_id" id="boss_id">
-                                    @foreach($bosses as $boss)
-                                        <option {{old('boss_id', $employee->boss_id) == $boss->id ? 'selected' : ''}} value="{{$boss->id}}">{{$boss->name}}</option>
-                                    @endforeach
-                                </select>
-                                <span class="text-danger"><small>{{ $errors->first('boss_id')}}</small></span>
+                                <label class="form-control-label" for="email">E-mail<span class="text-muted"> (Obligatorio)</span></label>
+                                <input name="email" class="form-control @if($errors->has('email')) border-danger @endif" placeholder="Correo electrónico" type="email" value="{{old('email', $employee->email)}}">
+                                <span class="text-danger"><small>{{ $errors->first('email')}}</small></span>
                             </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="password">Contraseña<span class="text-muted"> (Ingrese un valor, sólo si desea modificar la contraseña)</span></label>
+                                <input name="password" class="form-control @if($errors->has('password')) border-danger @endif" placeholder="Contraseña" type="text" value="">
+                                <span class="text-danger"><small>{{ $errors->first('password')}}</small></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="phone">Teléfono<span class="text-muted"> (Opcional)</span></label>
+                                <input name="phone" class="form-control @if($errors->has('phone')) border-danger @endif" placeholder="(10 dígitos)" type="number" value="{{old('phone', $employee->phone)}}">
+                                <span class="text-danger"><small>{{ $errors->first('phone')}}</small></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="no_control">No. de Control<span class="text-muted"> (Opcional)</span></label>
+                                <input name="no_control" class="form-control @if($errors->has('no_control')) border-danger @endif" placeholder="(5 dígitos)" type="number" value="{{old('no_control', $employee->no_control)}}">
+                                <span class="text-danger"><small>{{ $errors->first('no_control')}}</small></span>
+                            </div>
+                            {{--                            <div class="form-group">
+                                                            <label class="form-control-label">Nombre del área <span class="text-muted">(Obligatorio)</span></label>
+                                                            <select class="form-control" name="area_id" id="area_id">
+                                                                <option value="">Seleccionar...</option>
+                                                                @foreach($areas as $area)
+
+                                                                <option value="{{$area['id']}}">{{$area['name']}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>--}}
                             <button type="submit" class="btn btn-primary" onclick="return confirm('¿Seguro que deseas editar este registro?');">Guardar</button>
                         </form>
                     </div>

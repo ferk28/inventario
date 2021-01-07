@@ -73,7 +73,7 @@
                                     <form action="{{ url('/employees/'.$employee->id) }}" method="post" >
                                         @csrf
                                         @method('DELETE')
-                                        <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/bosses/'.$employee->id.'/edit') }}"></a>
+                                        <a class="btn btn-sm btn-primary ni ni-settings-gear-65" href="{{ url('/employees/'.$employee->id.'/edit') }}"></a>
                                         <button class="btn btn-sm btn-danger ni ni-fat-delete" type="submit" onclick="return confirm('¿Seguro que deseas eliminarlo de tu corazon y de nuestros registros?');"></button>
                                     </form>
                                 </td>

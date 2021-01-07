@@ -19,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::paginate(10);
+        $employees = User::employees()->paginate(5);
         return view('employees.index', compact('employees'));
     }
 
@@ -42,12 +42,15 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeFormRequest $request)
     {
+        User::create(
+            $request->only('name', 'email', 'phone', 'no_control')
+            + [
+                'role' => 'employee',
+                'password' => bcrypt($request->input('password'))
+            ]
+        );
         //dd($request->all());
-        $employees = new Employee();
-        $employees->name = $request->input('name');
-        $employees->boss_id = $request->input('boss_id');
-        $employees->save();
-        return redirect('/employees')->with('message',' - El empleado ha sido agregado satisfactoriamente!');
+        return redirect('/employees')->with('message',' - El empleado :D ha sido agregado satisfactoriamente! :D');
     }
 
     /**
@@ -67,10 +70,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit($id)
     {
-        $bosses = Boss::all();
-        return view('employees.edit', compact('bosses','employee'));
+        $employee = User::employees()->findOrFail($id);
+        return view('employees.edit', compact('employee'));
     }
 
     /**
@@ -80,11 +83,21 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeFormRequest $request, Employee $employee)
+    public function update(EmployeeFormRequest $request, $id)
     {
-        $employee->name=$request->input('name');
-        $employee->boss_id=$request->input('boss_id');
-        $employee->save();
+        //dd($request->all());
+        $user = User::employees()->findOrFail($id);
+
+        $data = $request->only('name', 'phone', 'no_control');
+
+        $password = $request->input('password');
+
+        if($password)
+            $data += ['password' => bcrypt($password)];
+
+
+        $user->fill($data);
+        $user->save();
         return redirect()->route('employees.index')->with('message',' - El empleado ha sido actualizado satisfactoriamente');
     }
 
@@ -94,9 +107,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(User $employee)
     {
+        $employeeName = $employee->name;
         $employee->delete();
-        return redirect()->route('employees.index')->with('message-alert',' - El empleado ha sido borrado permanentemente');
+        return redirect()->route('employees.index')->with('message-alert',' - El empleado '.$employeeName. ' ha sido borrado permanentemente');
     }
 }
