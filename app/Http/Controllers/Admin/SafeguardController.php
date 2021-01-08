@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\SafeguardFormRequest;
 use PDF;
 use App\Employee;
 use App\Inventory;
 use App\Safeguard;
+use App\Http\Controllers\Controller;
 
 class SafeguardController extends Controller
 {

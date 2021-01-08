@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Area;
 use App\User;
-use App\Http\Requests\EmployeeFormRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\BossFormRequest;
+use App\Http\Controllers\Controller;
 
-class EmployeeController extends Controller
+class BossController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +20,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = User::employees()->paginate(5);
-        return view('employees.index', compact('employees'));
+        $bosses = User::bosses()->paginate(10);
+        return view('bosses.index', compact('bosses'));
     }
 
     /**
@@ -26,8 +31,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        $bosses = User::all();
-        return view('employees.create',compact('bosses'));
+        $areas = Area::all();
+        return view('bosses.create', compact('areas'));
     }
 
     /**
@@ -36,17 +41,17 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmployeeFormRequest $request)
+    public function store(BossFormRequest $request)
     {
         User::create(
             $request->only('name', 'email', 'phone', 'no_control')
             + [
-                'role' => 'employee',
+                'role' => 'boss',
                 'password' => bcrypt($request->input('password'))
             ]
         );
         //dd($request->all());
-        return redirect('/employees')->with('message',' - El empleado :D ha sido agregado satisfactoriamente! :D');
+        return redirect('/bosses')->with('message',' - El patron :D ha sido agregado satisfactoriamente! :D');
     }
 
     /**
@@ -68,8 +73,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        $employee = User::employees()->findOrFail($id);
-        return view('employees.edit', compact('employee'));
+        $boss = User::bosses()->findOrFail($id);
+        return view('bosses.edit', compact('boss'));
     }
 
     /**
@@ -79,10 +84,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeFormRequest $request, $id)
+    public function update(BossFormRequest $request, $id)
     {
         //dd($request->all());
-        $user = User::employees()->findOrFail($id);
+        $user = User::bosses()->findOrFail($id);
 
         $data = $request->only('name', 'phone', 'no_control');
 
@@ -94,7 +99,7 @@ class EmployeeController extends Controller
 
         $user->fill($data);
         $user->save();
-        return redirect()->route('employees.index')->with('message',' - El empleado ha sido actualizado satisfactoriamente');
+        return redirect()->route('bosses.index')->with('message',' - El patron :D ha sido actualizado satisfactoriamente');
     }
 
     /**
@@ -103,10 +108,10 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $employee)
+    public function destroy(User $boss)
     {
-        $employeeName = $employee->name;
-        $employee->delete();
-        return redirect()->route('employees.index')->with('message-alert',' - El empleado '.$employeeName. ' ha sido borrado permanentemente');
+        $bossName = $boss->name;
+        $boss->delete();
+        return redirect()->route('bosses.index')->with('message-alert',' - El patrón ' .$bossName. ' :D se ha borrado permanentemente');
     }
 }

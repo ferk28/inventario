@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\InventoryEditFormRequest;
 use App\Http\Requests\InventoryFormRequest;
 use App\Inventory;
-use Illuminate\Http\Request;
 Use Auth;
+use App\Http\Controllers\Controller;
+
 
 class InventoryController extends Controller
 {

@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Area;
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Requests\AreaFormRequest;
 use App\Http\Requests\AreaEditFormRequest;
-
+use App\Http\Controllers\Controller;
 
 class AreaController extends Controller
 {
