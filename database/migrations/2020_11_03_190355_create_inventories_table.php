@@ -17,14 +17,18 @@ class CreateInventoriesTable extends Migration
             $table->id();
             $table->string('brand');
             $table->string('serial')->nullable();
+            //cantidad
+            $table->string('quantity')->nullable();
             $table->string('type');
             $table->string('model');
-            $table->string ('color')->nullable();
+            $table->string('color')->nullable();
             $table->string('value');
             $table->string('feature');
+            //measure
+            $table->string('measure')->nullable();
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            //$table->unsignedBigInteger('user_id');
+            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

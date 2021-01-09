@@ -41,20 +41,24 @@
             <span class="nav-link-text">Empleados</span>
         </a>
     </li>
-     {{-- inventories  --}}
-    <li class="nav-item">
-        <a class="nav-link {{ Request::segment(1) === 'inventories' ? 'active' : null }}" href="{{url('inventories')}}">
-            <i class="ni ni-box-2 text-indigo"></i>
-            <span class="nav-link-text">Inventario</span>
-        </a>
-    </li>
+
+
+    <h6 class="navbar-heading p-10 text-muted">
+        <span class="docs-normal">Inventario</span>
+    </h6>
     {{-- serials --}}
-    <a class="nav-item">
+    <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="ni ni-map-big text-default"></i>
             <span class="nav-link-text">Seriales</span>
         </a>
-    </a>
+    </li>
+    {{-- products  --}}
+    <li class="nav-item">
+        <a class="nav-link {{ Request::segment(1) === 'inventories' ? 'active' : null }}" href="{{url('inventories')}}">
+            <i class="ni ni-box-2 text-indigo"></i>
+            <span class="nav-link-text">Productos</span>
+        </a>
     </li>
     @elseif (auth()->user()->role == 'boss')
     {{-- safeguards --}}
@@ -71,11 +75,11 @@
             <span class="nav-link-text">Empleados</span>
         </a>
     </li>
-    {{-- inventories  --}}
+    {{-- products  --}}
     <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) === 'inventories' ? 'active' : null }}" href="{{url('inventories')}}">
             <i class="ni ni-box-2 text-indigo"></i>
-            <span class="nav-link-text">Inventario</span>
+            <span class="nav-link-text">Productos</span>
         </a>
     </li>
     {{-- serials --}}
@@ -86,12 +90,13 @@
          </a>
     </a>
     </li>
+
     @elseif (auth()->user()->role == 'employee')
-    {{-- inventories  --}}
+    {{-- products  --}}
     <li class="nav-item">
         <a class="nav-link {{ Request::segment(1) === 'inventories' ? 'active' : null }}" href="{{url('inventories')}}">
             <i class="ni ni-box-2 text-indigo"></i>
-            <span class="nav-link-text">Inventario</span>
+            <span class="nav-link-text">Productos</span>
         </a>
     </li>
     @endif

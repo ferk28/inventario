@@ -20,7 +20,7 @@ class BossController extends Controller
      */
     public function index()
     {
-        $bosses = User::bosses()->paginate(10);
+        $bosses = User::bosses()->paginate(5);
         return view('bosses.index', compact('bosses'));
     }
 

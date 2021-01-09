@@ -7,6 +7,7 @@ use App\Http\Requests\InventoryFormRequest;
 use App\Inventory;
 Use Auth;
 use App\Http\Controllers\Controller;
+use Symfony\Component\Console\Input\Input;
 
 
 class InventoryController extends Controller
@@ -18,7 +19,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $inventories = Inventory::paginate(10);
+        $inventories = Inventory::paginate(5);
         return view('inventories.index', compact('inventories'));
     }
 
@@ -29,13 +30,30 @@ class InventoryController extends Controller
      */
     public function create()
     {
-        return view('inventories.create');
+        $inventories = Inventory::all();
+        return view('inventories.create', compact('inventories'));
     }
 
     public function store(InventoryFormRequest $request)
     {
+
+
+        if($request->input('serial', 0))
+        {
+            Inventory::create(
+                $request->only('brand', 'serial', 'type', 'model', 'color', 'value', 'feature', 'description')
+            );
+            dd($request->all());
+        }
+        else
+        {
+            return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
+
+
+        }
+
         //dd($request->all());
-        $inventory = new Inventory();
+/*        $inventory = new Inventory();
         $inventory->brand = $request->input('brand');
         $inventory->serial = $request->input('serial');
         $inventory->type = $request->input('type');
@@ -44,9 +62,9 @@ class InventoryController extends Controller
         $inventory->value = $request->input('value');
         $inventory->feature = $request->input('feature');
         $inventory->description = $request->input('description');
-        $inventory->user_id = Auth::user()->id;
+        //$inventory->user_id = Auth::user()->id;
         $inventory->save();
-        return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
+        return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');*/
     }
 
     /**
