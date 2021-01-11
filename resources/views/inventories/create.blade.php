@@ -52,8 +52,8 @@
                                         <div class="col-sm">
                                             <label class="form-control-label" for="basic-url">Serial</label>
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="serial" name="serial" {{$inventories->serial == 0 ? 'checked' : ''}}>
-                                                <label class="custom-control-label" for="serialCheck">Producto serializado</label>
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1" name="customCheck1">{{-- {{$inventories->serial == 0 ? 'checked' : ''}} --}}
+                                                <label class="custom-control-label" for="customCheck1">Producto serializado</label>
                                             </div>
                                         </div>
                                         <div class="col-sm">

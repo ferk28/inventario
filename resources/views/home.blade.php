@@ -17,8 +17,11 @@
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('css/argon.css?v=1.2.0')}}">
+    {{-- Dragula CSS --}}
+{{--    <link rel="stylesheet" href="{{ asset('css/dragula.min.css')}}">--}}
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -301,22 +304,22 @@
             </div>
         </div>
     </div>
-    <!-- Page content -->
+{{--     Page content --}}
     @yield('content')
 
 </div>
-<!-- Argon Scripts -->
-<!-- Core -->
+{{-- Argon Scripts --}}
+{{-- Core --}}
 <script src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/js-cookie/js.cookie.js') }}"></script>
 <script src="{{ asset('vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
-<!-- Optional JS -->
+{{-- Optional JS --}}
 <script src="{{ asset('vendor/chart.js/dist/Chart.min.js') }}"></script>
 <script src="{{ asset('vendor/chart.js/dist/Chart.extension.js') }}"></script>
-<!-- Argon JS -->
-<script src="{{ asset('js/argon.js?v=1.2.0') }}"></script>
+{{-- Dragula JS --}}
+{{--<script src="{{ asset('js/dragula.min.js') }}"></script>--}}
 </body>
 
 </html>

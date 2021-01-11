@@ -27,6 +27,8 @@ Route::middleware(['auth', 'admin'])->namespace('Admin')->group(function () {
     Route::resource('bosses','BossController');
     Route::resource('employees','EmployeeController');
     Route::resource('safeguards','SafeguardController');
+    Route::resource('series','SafeguardController');
+
 
     Route::resource('inventories','InventoryController');
 

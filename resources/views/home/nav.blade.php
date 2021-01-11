@@ -46,7 +46,7 @@
     <h6 class="navbar-heading p-10 text-muted">
         <span class="docs-normal">Inventario</span>
     </h6>
-    {{-- serials --}}
+    {{-- series --}}
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="ni ni-map-big text-default"></i>
@@ -82,7 +82,7 @@
             <span class="nav-link-text">Productos</span>
         </a>
     </li>
-    {{-- serials --}}
+    {{-- series --}}
      <a class="nav-item">
          <a class="nav-link" href="#">
              <i class="ni ni-map-big text-default"></i>

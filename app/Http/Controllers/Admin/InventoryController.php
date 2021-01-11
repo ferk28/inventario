@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\InventoryEditFormRequest;
 use App\Http\Requests\InventoryFormRequest;
 use App\Inventory;
-Use Auth;
 use App\Http\Controllers\Controller;
 use Symfony\Component\Console\Input\Input;
+use App\Serie;
 
 
 class InventoryController extends Controller
@@ -36,18 +36,19 @@ class InventoryController extends Controller
 
     public function store(InventoryFormRequest $request)
     {
-
-
-        if($request->input('serial', 0))
+        if($request->input('customCheck1') == true)
         {
-            Inventory::create(
-                $request->only('brand', 'serial', 'type', 'model', 'color', 'value', 'feature', 'description')
-            );
-            dd($request->all());
+            $series = Serie::all();
+            return view('series.create', compact('series'))->with('message',' - El producto se ha sido agregado satisfactoriamente!');
+
         }
         else
         {
-            return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');
+
+/*            Inventory::create(
+                $request->only('brand', 'serial', 'type', 'model', 'color', 'value', 'feature', 'description')
+            );*/
+            dd($request->all());
 
 
         }
