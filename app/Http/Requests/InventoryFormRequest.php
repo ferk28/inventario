@@ -24,12 +24,18 @@ class InventoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'brand'=>'min:1|max:25',
-            'type'=>'min:1|max:25',
-            'model'=>'min:1|max:25',
+            'brand'=>'required|min:1|max:50',
+            'quantity' => 'numeric',
+            'type'=>'required|min:1|max:50',
+            'model'=>'required|min:1|max:50',
+            'unity' => 'min:1|max:20',
+            'color' => 'min:1|max:20',
             //'serial'=>'min:1|max:25',
-            'value'=>'numeric',
-            'feature'=>'min:1|max:100',
+            'value'=>'required|numeric',
+            'feature'=>'required|min:1|max:100',
+            'size'=>'min:1|max:100',
+            'description'=>'min:1|max:100',
+            'user_id'=>'min:1|max:100',
         ];
     }
 }

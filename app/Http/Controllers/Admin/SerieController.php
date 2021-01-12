@@ -25,7 +25,6 @@ class SerieController extends Controller
      */
     public function create(Serie $series)
     {
-        $series = Serie::all();
         return view('series.create', compact('series'));
     }
 
@@ -37,7 +36,11 @@ class SerieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $count = count($request->serie);
+
+        for($i=0; $i<$count; ++$i){
+
+        }
     }
 
     /**

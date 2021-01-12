@@ -10,7 +10,7 @@
     <span class="docs-normal">Consultar</span>
     @endif
 </h6>
-<!-- Nav items -->
+{{-- Nav items --}}
 <ul class="navbar-nav">
     @if (auth()->user()->role == 'admin')
      {{-- safeguards --}}

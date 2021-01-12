@@ -18,9 +18,9 @@
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('css/argon.css?v=1.2.0')}}">
     {{-- Dragula CSS --}}
-{{--    <link rel="stylesheet" href="{{ asset('css/dragula.min.css')}}">--}}
+    {{--    <link rel="stylesheet" href="{{ asset('css/dragula.min.css')}}">--}}
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{{--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--}}
 
 </head>
 
@@ -320,6 +320,8 @@
 <script src="{{ asset('vendor/chart.js/dist/Chart.extension.js') }}"></script>
 {{-- Dragula JS --}}
 {{--<script src="{{ asset('js/dragula.min.js') }}"></script>--}}
+<script src="{{ asset('js/argon.js?v=1.2.0')}}"></script>
+
 </body>
 
 </html>

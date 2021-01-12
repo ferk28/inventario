@@ -42,7 +42,7 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Ver</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Nombre de la marca</th>
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Tipo</th>
@@ -50,6 +50,7 @@
                                 <th scope="col">Color</th>
                                 <th scope="col">Precio</th>
                                 <th scope="col">Características</th>
+                                <th scope="col">Tamaño</th>
                                 <th scope="col">Descripción</th>
                                 <th scope="col">Opciones</th>
                             </tr>

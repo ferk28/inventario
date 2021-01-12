@@ -2,12 +2,7 @@
 @section('subtitle','Inventario')
 @section('dir','Inventario')
 @section('action','Nuevo')
-
-
-
-
 @section('content')
-
     <div class="container-fluid mt--6">
         <!-- Page content -->
         <div class="row">
@@ -72,9 +67,9 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-sm">
-                                            <label class="form-control-label">Modelo<span class="text-muted">(Obligatorio)</span></label>
-                                            <input type="text" name="model" class="form-control @if($errors->has('model')) border-danger @endif" placeholder="Modelo del producto" value="{{old('model')}}">
-                                            <span class="text-danger"><small>{{ $errors->first('model')}}</small></span>
+                                            <label class="form-control-label">Unidad<span class="text-muted">(Obligatorio)</span></label>
+                                            <input type="text" name="unity" class="form-control @if($errors->has('unity')) border-danger @endif" placeholder="Pieza,Caja, etc" value="{{old('unity')}}">
+                                            <span class="text-danger"><small>{{ $errors->first('unity')}}</small></span>
                                         </div>
                                         <div class="col-sm">
                                             <label class="form-control-label">Color</label>
@@ -110,13 +105,14 @@
                                             <span class="text-danger"><small>{{ $errors->first('model')}}</small></span>
                                         </div>
                                         <div class="col-sm">
-                                            <label class="form-control-label">Medida<span class="text-muted">(Opcional)</span></label>
+                                            <label class="form-control-label">Medida</label>
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" id="inputGroup-sizing-default">Metros</span>
                                                     </div>
-                                                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                                    <input type="text" name="size" class="form-control @if($errors->has('size')) border-danger @endif" placeholder="Medida del producto" value="{{old('size')}}">
+                                                    <span class="text-danger"><small>{{ $errors->first('size')}}</small></span>
                                                 </div>
                                             </div>
                                         </div>

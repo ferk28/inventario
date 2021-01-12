@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\SafeguardFormRequest;
 use PDF;
-use App\Employee;
 use App\Inventory;
 use App\Safeguard;
 use App\Http\Controllers\Controller;
@@ -19,7 +18,7 @@ class SafeguardController extends Controller
      */
     public function index()
     {
-        $safeguards = Safeguard::with('employee','inventory')->get();
+        $safeguards = Safeguard::with('inventory');
         return view('safeguards.index', compact('safeguards'));
     }
 
@@ -31,8 +30,7 @@ class SafeguardController extends Controller
     public function create()
     {
         $inventories = Inventory::all();
-        $employees = Employee::all();
-        return view('safeguards.create', compact('inventories', 'employees'));
+        return view('safeguards.create', compact('inventories'));
     }
 
     /**

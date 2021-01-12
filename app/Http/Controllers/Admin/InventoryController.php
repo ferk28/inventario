@@ -6,6 +6,8 @@ use App\Http\Requests\InventoryEditFormRequest;
 use App\Http\Requests\InventoryFormRequest;
 use App\Inventory;
 use App\Http\Controllers\Controller;
+use http\Client\Curl\User;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 use App\Serie;
 
@@ -38,19 +40,23 @@ class InventoryController extends Controller
     {
         if($request->input('customCheck1') == true)
         {
-            $series = Serie::all();
-            return view('series.create', compact('series'))->with('message',' - El producto se ha sido agregado satisfactoriamente!');
-
+            //dd($request->all());
+            Inventory::create(
+                $request->only('brand', 'type', 'model', 'unity', 'color', 'value', 'feature', 'size', 'description')
+                + [
+                    'user_id' =>  Auth::id(),
+                ]
+            );
+            //dd($request->all());
+            $seriesCount = $request->input('quantity');
+            return view('series.create', compact('seriesCount'));
         }
         else
         {
-
 /*            Inventory::create(
                 $request->only('brand', 'serial', 'type', 'model', 'color', 'value', 'feature', 'description')
             );*/
             dd($request->all());
-
-
         }
 
         //dd($request->all());
