@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Serie;
+use App\Inventory;
 use Illuminate\Http\Request;
 
 class SerieController extends Controller
@@ -23,9 +24,10 @@ class SerieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Serie $series)
+    public function create(Inventory $inventory)
     {
-        return view('series.create', compact('series'));
+        //dd($series);
+        return view('series.create', compact('inventory'));
     }
 
     /**
@@ -36,11 +38,17 @@ class SerieController extends Controller
      */
     public function store(Request $request)
     {
-        $count = count($request->serie);
 
-        for($i=0; $i<$count; ++$i){
+        $count = count((array)$request->serie);
 
+        for($i=0; $i<$count; $i++){
+            $series = new Serie();
+            $series->serie = $request->serie[$i];
+            $series->save();
         }
+        dd($request->all());
+
+        //return redirect()->back()->with('message','Buena perro');
     }
 
     /**

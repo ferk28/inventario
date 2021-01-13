@@ -12,7 +12,8 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">Crear Producto - Serie</h3>
+                                <h3 class="mb-0">ID: {{$inventories->id}} / Modelo: {{$inventories->model}} </h3>
+                                <h3 class="mb-3">Marca: {{$inventories->brand}} / Tipo: {{$inventories->type}}</h3>
                             </div>
                             <div class="col text-right">
                                 <a href="{{url('inventories')}}" class="btn btn-sm btn-danger">Cancelar</a>
@@ -26,10 +27,10 @@
                                 <div class="col-md-10">
                                     <label class="form-control-label">Ingrese las serie(s)</label>
                                     <input type="text" placeholder="Ingresar serial" class="form-control" name="serie"  id="serie" value="">
-                                    <span class="text-danger"><small>{{ $errors->has('serie') ?  $errors->first('serie') : '' }}</small>  </span>
+                                    <span class="text-danger"><small>{{ $errors->has('series') ?  $errors->first('series') : '' }}</small>  </span>
                                 </div>
                                 <div class="col-md-2" style="margin-top:40px;">
-                                    <button id="addMore" class="btn btn-icon btn-sm btn-primary">
+                                    <button type="button" id="addMore" class="btn btn-sm btn-primary">
                                         <span class="btn-inner--icon"><i class="ni ni-fat-add"></i></span>
                                     </button>
                                 </div>
@@ -48,7 +49,7 @@
                                         @for($i=0; $i<$seriesCount; ++$i)
                                             <tr class="delete_add_more_item" id="delete_add_more_item">
                                                 <td>
-                                                    <input type="number" class="form-control" name="cost[]" value="@{{ cost }}" placeholder="Serie">
+                                                    <input type="text" class="form-control" name="serie[]" value="" placeholder="Serie">
                                                 </td>
 
                                                 <td>
@@ -78,7 +79,7 @@
         <script id="document-template" type="text/x-handlebars-template">
             <tr class="delete_add_more_item" id="delete_add_more_item">
                 <td>
-                    <input type="number" class="form-control" name="serie[]" value="@{{ serie }}" placeholder="Serie">
+                    <input type="text" class="form-control" name="serie[]" value="@{{ serie }}" placeholder="Serie">
                 </td>
                 <td>
                     <button class="removeaddmore btn btn-danger btn-sm">

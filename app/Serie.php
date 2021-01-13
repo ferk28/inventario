@@ -9,5 +9,13 @@ class Serie extends Model
     protected $fillable = [
         'serie'
     ];
-    public $table = "series";
+
+    protected $guarded = [
+        //'serie'
+    ];
+
+/*    public function scopeSeries($query)
+    {
+        return $query->where('role','boss');
+    }*/
 }

@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm">
-                                            <label class="form-control-label">Cantidad<span class="text-muted">(Obligatorio)</span></label>
+                                            <label class="form-control-label">Cantidad</label>
                                             <input type="number" name="quantity" id="quantity" class="form-control @if($errors->has('')) border-danger @endif" placeholder="Cantidad" value="{{old('')}}">
                                             <span class="text-danger"><small>{{ $errors->first('')}}</small></span>
                                         </div>

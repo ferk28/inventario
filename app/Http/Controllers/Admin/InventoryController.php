@@ -7,7 +7,11 @@ use App\Http\Requests\InventoryFormRequest;
 use App\Inventory;
 use App\Http\Controllers\Controller;
 use http\Client\Curl\User;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use MongoDB\Driver\Session;
 use Symfony\Component\Console\Input\Input;
 use App\Serie;
 
@@ -21,7 +25,7 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $inventories = Inventory::paginate(5);
+        $inventories = Inventory::paginate(10);
         return view('inventories.index', compact('inventories'));
     }
 
@@ -41,15 +45,21 @@ class InventoryController extends Controller
         if($request->input('customCheck1') == true)
         {
             //dd($request->all());
-            Inventory::create(
+             Inventory::create(
                 $request->only('brand', 'type', 'model', 'unity', 'color', 'value', 'feature', 'size', 'description')
                 + [
                     'user_id' =>  Auth::id(),
                 ]
             );
             //dd($request->all());
-            $seriesCount = $request->input('quantity');
-            return view('series.create', compact('seriesCount'));
+            $inventories = DB::table("inventories")
+                ->where('model', '=', $request->get('model'))
+                ->first(); //latest()
+             $seriesCount = $request->input('quantity');
+             return view('series.create', compact('seriesCount','inventories'));
+
+            //return redirect()->route('series.create',[$inventory])->with(compact($seriesCount));
+
         }
         else
         {
