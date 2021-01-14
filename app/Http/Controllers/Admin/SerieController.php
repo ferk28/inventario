@@ -46,9 +46,8 @@ class SerieController extends Controller
             $series->serie = $request->serie[$i];
             $series->save();
         }
-        dd($request->all());
-
-        //return redirect()->back()->with('message','Buena perro');
+        //dd($request->all());
+        return redirect()->back()->with('message','Buena perro');
     }
 
     /**
