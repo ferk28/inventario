@@ -12,8 +12,10 @@
                     <div class="card-header border-0">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h3 class="mb-0">ID: {{$inventories->id}} / Modelo: {{$inventories->model}} </h3>
-                                <h3 class="mb-3">Marca: {{$inventories->brand}} / Tipo: {{$inventories->type}}</h3>
+                                <span class="badge badge-pill badge-md badge-info">ID: {{$inventories->id}} </span>
+                                <span class="badge badge-pill badge-md badge-primary">MODELO: {{$inventories->model}} </span>
+                                <span class="badge badge-pill badge-md badge-primary">MARCA: {{$inventories->brand}} </span>
+                                <span class="badge badge-pill badge-md badge-primary">TIPO: {{$inventories->type}} </span>
                             </div>
                             <div class="col text-right">
                                 <a href="{{url('inventories')}}" class="btn btn-sm btn-danger">Cancelar</a>
@@ -51,13 +53,14 @@
                                                 <td>
                                                     <input type="text" class="form-control" name="serie[]" value="" placeholder="Serie">
                                                 </td>
-
                                                 <td>
                                                     <button class="removeaddmore btn btn-danger btn-sm">
                                                         <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
                                                     </button>
                                                 </td>
-
+                                                <td>
+                                                    <input type="hidden" class="form-control" name="id" value="@{{$inventories->id}}" placeholder="ID" disabled>
+                                                </td>
                                             </tr>
                                         @endfor
                                         </tbody>
@@ -85,6 +88,9 @@
                     <button class="removeaddmore btn btn-danger btn-sm">
                         <span class="btn-inner--icon"><i class="ni ni-fat-delete"></i></span>
                     </button>
+                </td>
+                <td>
+                    <input type="hidden" class="form-control" name="id" value="@{{$inventories->id}}" placeholder="ID" disabled>
                 </td>
             </tr>
         </script>

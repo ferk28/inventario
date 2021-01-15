@@ -70,15 +70,7 @@ class InventoryController extends Controller
         }
 
         //dd($request->all());
-/*        $inventory = new Inventory();
-        $inventory->brand = $request->input('brand');
-        $inventory->serial = $request->input('serial');
-        $inventory->type = $request->input('type');
-        $inventory->model = $request->input('model');
-        $inventory->color = $request->input('color');
-        $inventory->value = $request->input('value');
-        $inventory->feature = $request->input('feature');
-        $inventory->description = $request->input('description');
+/*
         //$inventory->user_id = Auth::user()->id;
         $inventory->save();
         return redirect('/inventories')->with('message',' - El producto se ha sido agregado satisfactoriamente!');*/

@@ -38,12 +38,13 @@ class SerieController extends Controller
      */
     public function store(Request $request)
     {
-
+        $id = $request->input('id');
         $count = count((array)$request->serie);
 
         for($i=0; $i<$count; $i++){
             $series = new Serie();
             $series->serie = $request->serie[$i];
+            $series->inventory_id = $request->serie[id];
             $series->save();
         }
         //dd($request->all());
