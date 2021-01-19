@@ -31,6 +31,7 @@ Route::middleware(['auth', 'admin'])->namespace('Admin')->group(function () {
     Route::resource('inventories','InventoryController');
 
     Route::get('/safeguards/pdf/{id}', 'SafeguardController@PDFgenerator');
+    //Route::get('/series/create', 'SerieController@create')->name('series.create');
 
     /*        Route::resources([
             'areas' => AreaController::class,

@@ -24,10 +24,10 @@ class SerieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Inventory $inventory)
+    public function create(Inventory $inventories)
     {
         //dd($series);
-        return view('series.create', compact('inventory'));
+        return view('series.create', compact('inventories'))->with('seriesCount');
     }
 
     /**
@@ -39,16 +39,17 @@ class SerieController extends Controller
     public function store(Request $request)
     {
         $id = $request->input('id');
-        $count = count((array)$request->serie);
+        dd($id);
+/*        $count = count((array)$request->serie);
 
         for($i=0; $i<$count; $i++){
             $series = new Serie();
-            $series->serie = $request->serie[$i];
-            $series->inventory_id = $request->serie[id];
-            $series->save();
-        }
-        //dd($request->all());
-        return redirect()->back()->with('message','Buena perro');
+            $series->$request('id');
+            //$series->save();
+            dd($id);
+
+        }*/
+        //return redirect()->back()->with('message','Buena perro');
     }
 
     /**

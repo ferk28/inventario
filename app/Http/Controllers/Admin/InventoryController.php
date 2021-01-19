@@ -45,20 +45,20 @@ class InventoryController extends Controller
         if($request->input('customCheck1') == true)
         {
             //dd($request->all());
-             Inventory::create(
+/*             Inventory::create(
                 $request->only('brand', 'type', 'model', 'unity', 'color', 'value', 'feature', 'size', 'description')
                 + [
                     'user_id' =>  Auth::id(),
                 ]
-            );
+            );*/
             //dd($request->all());
             $inventories = DB::table("inventories")
                 ->where('model', '=', $request->get('model'))
                 ->first(); //latest()
              $seriesCount = $request->input('quantity');
-             return view('series.create', compact('seriesCount','inventories'));
-
-            //return redirect()->route('series.create',[$inventory])->with(compact($seriesCount));
+             //return view('series.create', compact('seriesCount','inventories'));
+            //return Redirect::route('series.create', 'inventories');
+            return redirect()->route('series.create')->with(['inventories' => $inventories])->with(compact('seriesCount'));
 
         }
         else

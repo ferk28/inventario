@@ -59,7 +59,7 @@
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <input type="hidden" class="form-control" name="id" value="@{{$inventories->id}}" placeholder="ID" disabled>
+                                                    <input type="hidden" class="form-control" name="id[{!! $inventories->id !!}]" value="" placeholder="ID" disabled>
                                                 </td>
                                             </tr>
                                         @endfor
@@ -90,7 +90,7 @@
                     </button>
                 </td>
                 <td>
-                    <input type="hidden" class="form-control" name="id" value="@{{$inventories->id}}" placeholder="ID" disabled>
+                    <input type="hidden" class="form-control" name="id[{!! $inventories->id !!}]" value="" placeholder="ID" disabled>
                 </td>
             </tr>
         </script>
