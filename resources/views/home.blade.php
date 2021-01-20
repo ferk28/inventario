@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <!-- Search form -->
-{{--                <form method="GET" action="search" class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                <form method="GET" action="search" class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
                     @csrf
                     <div class="form-group mb-0">
                         <div class="input-group input-group-alternative input-group-merge">
@@ -63,7 +63,7 @@
                     <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
-                </form>--}}
+                </form>
                 <!-- Navbar links -->
                 <ul class="navbar-nav align-items-center  ml-md-auto ">
                     <li class="nav-item d-xl-none">
@@ -320,6 +320,7 @@
 <script src="{{ asset('vendor/chart.js/dist/Chart.min.js') }}"></script>
 <script src="{{ asset('vendor/chart.js/dist/Chart.extension.js') }}"></script>
 {{-- Dragula JS --}}
+@yield('scripts')
 {{--<script src="{{ asset('js/dragula.min.js') }}"></script>--}}
 <script src="{{ asset('js/argon.js?v=1.2.0')}}"></script>
 

@@ -125,5 +125,8 @@
     <orderEntry type="library" name="jquery-1.12.4" level="application" />
     <orderEntry type="library" name="jquery-ui" level="application" />
     <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="select2" level="application" />
+    <orderEntry type="library" name="twitter-bootstrap" level="application" />
   </component>
 </module>

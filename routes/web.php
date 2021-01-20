@@ -32,7 +32,9 @@ Route::middleware(['auth', 'admin'])->namespace('Admin')->group(function () {
 
     Route::get('/safeguards/pdf/{id}', 'SafeguardController@PDFgenerator');
     //Route::get('/series/create', 'SerieController@create')->name('series.create');
-    Route::get('/inventories/autocomplete/', 'InventoryController@autocomplete')->name('autocomplete');
+    Route::get('inventories/getProduct', 'InventoryController@getProduct');
+    Route::get('/search',['uses' => 'InventoryController@getProduct','as' => 'search']);
+
 
     /*        Route::resources([
             'areas' => AreaController::class,

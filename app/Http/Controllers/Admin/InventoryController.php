@@ -136,15 +136,14 @@ class InventoryController extends Controller
         return redirect()->route('inventories.index')->with('message-alert',' - El area'. $deletedNAme . 'ha sido borrada permanentemente');
     }
 
-    public function autocomplete(Request $request)
+    public function getProduct(Inventory $request)
     {
-        $data = Inventory::select("brand")
-            ->where("brand","LIKE","%{$request->input('query')}%")
-            ->get();
-
-        return response()->json($data);
+        $product = Inventory::find($request->id)->first(); // Product is the model
+        dd($product);
+/*        if ($product)
+        {
+            return response()->json(['product_price' => $product->product_price,'product_quantity' => $product->product_quantity]);
+        }*/
     }
-
-
 
 }
