@@ -25,6 +25,10 @@ class CreateInventoriesTable extends Migration
             $table->string('feature');
             $table->string('size')->nullable();
             $table->string('description')->nullable();
+            $table->string('concept');
+            $table->string('quality')->nullable();
+            $table->string('status')->nullable();
+            //habilitado
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

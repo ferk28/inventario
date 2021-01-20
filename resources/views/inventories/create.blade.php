@@ -10,11 +10,27 @@
                 <div class="card">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Crear nuevo producto</h3>
-                            </div>
+
+                            <form class="navbar-search navbar-search-light form-inline mr-sm-3" name="search_prod" id="search_prod">
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-alternative input-group-merge">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                        </div>
+                                        <input class="form-control" placeholder="{{Lang::get('main.search')}}" type="text" name="search" id="search">
+                                    </div>
+                                    <div id="search_list"></div>
+                                </div>
+                                <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </form>
+
                             <div class="col text-right">
                                 <a href="{{url('inventories')}}" class="btn btn-sm btn-danger">Cancelar</a>
+                            </div>
+                            <div>
+                                <button name="product_create" class="btn btn-sm btn-success">Nuevo</button>
                             </div>
                         </div>
                     </div>
@@ -132,7 +148,43 @@
                 </div>
             </div>
         </div>
+        <!-- Script -->
+        <script type="text/javascript">
+            // jQuery wait till the page is fullt loaded
+            $(document).ready(function () {
+                // keyup function looks at the keys typed on the search box
+                $('#search').on('keyup',function() {
+                    // the text typed in the input field is assigned to a variable
+                    var query = $(this).val();
+                    // call to an ajax function
+                    $.ajax({
+                        // assign a controller function to perform search action - route name is search
+                        url:"{{ route('autocomplete') }}",
+                        // since we are getting data methos is assigned as GET
+                        type:"GET",
+                        // data are sent the server
+                        data:{'country':query},
+                        // if search is succcessfully done, this callback function is called
+                        success:function (data) {
+                            // print the search results in the div called country_list(id)
+                            $('#search_list').html(data);
+                        }
+                    })
+                    // end of ajax call
+                });
 
+                // initiate a click function on each search result
+                $(document).on('click', 'li', function(){
+                    // declare the value in the input field to a variable
+                    var value = $(this).text();
+                    // assign the value to the search box
+                    $('#search').val(value);
+                    // after click is done, search results segment is made empty
+                    $('#search_list').html("");
+                });
+            });
+        </script>
+        <script src="{!! asset('//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js') !!}"></script>
         <!-- Footer -->
         @include('home.footer')
     </div>

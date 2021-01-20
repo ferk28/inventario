@@ -42,11 +42,12 @@ class InventoryController extends Controller
 
     public function store(InventoryFormRequest $request)
     {
+
         if($request->input('customCheck1') == true)
         {
             //dd($request->all());
 /*             Inventory::create(
-                $request->only('brand', 'type', 'model', 'unity', 'color', 'value', 'feature', 'size', 'description')
+                $request->only('brand', 'quantity', 'type', 'model', 'unity', 'color', 'value', 'feature', 'size', 'description', 'concept', 'quality')
                 + [
                     'user_id' =>  Auth::id(),
                 ]
@@ -55,8 +56,9 @@ class InventoryController extends Controller
             $inventories = DB::table("inventories")
                 ->where('model', '=', $request->get('model'))
                 ->first(); //latest()
-             $seriesCount = $request->input('quantity');
-             //return view('series.create', compact('seriesCount','inventories'));
+            //session()->flash(['seriesCount' => 'quantity']);
+            //$seriesCount = $request->input('quantity');
+            //return view('series.create', compact('seriesCount','inventories'));
             //return Redirect::route('series.create', 'inventories');
             return redirect()->route('series.create')->with(['inventories' => $inventories])->with(compact('seriesCount'));
 
@@ -133,5 +135,16 @@ class InventoryController extends Controller
         $inventory->delete();
         return redirect()->route('inventories.index')->with('message-alert',' - El area'. $deletedNAme . 'ha sido borrada permanentemente');
     }
+
+    public function autocomplete(Request $request)
+    {
+        $data = Inventory::select("brand")
+            ->where("brand","LIKE","%{$request->input('query')}%")
+            ->get();
+
+        return response()->json($data);
+    }
+
+
 
 }

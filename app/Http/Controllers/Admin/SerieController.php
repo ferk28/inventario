@@ -26,8 +26,9 @@ class SerieController extends Controller
      */
     public function create(Inventory $inventories)
     {
+        $seriesCount = session()-get('seriesCount');
         //dd($series);
-        return view('series.create', compact('inventories'))->with('seriesCount');
+        return view('series.create', compact('inventories'))->with(compact('seriesCount'));
     }
 
     /**
